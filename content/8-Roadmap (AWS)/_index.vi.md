@@ -3,6 +3,7 @@ title: "Lộ trình học AWS"
 date: 2026-01-01
 weight: 8
 chapter: false
+pre: " <b> 8. </b> "
 ---
 
 ## Tháng 1–2: Nền tảng AWS

@@ -1,8 +1,9 @@
 ---
 title: "AWS Learning Roadmap"
 date: 2026-01-01
-weight: 8
+weight: 7
 chapter: false
+pre: " <b> 8. </b> "
 ---
 
 This section contains the AWS learning roadmap and long-term study plan.
