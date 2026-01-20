@@ -1,9 +1,7 @@
 ---
-
-# Lộ trình học AWS (Tối ưu Free Tier)
-
-## Hành trình học tập có cấu trúc trong 6 tháng
-
+title: "Lộ trình học AWS"
+weight: 8
+chapter: true
 ---
 
 ## Tháng 1–2: Nền tảng AWS

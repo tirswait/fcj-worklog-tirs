@@ -1,9 +1,10 @@
 ---
+title: "AWS Learning Roadmap"
+weight: 8
+chapter: true
+---
 
-# AWS Learning Roadmap (Free Tier Oriented)
-
-## 6-Month Structured Learning Journey
-
+This section contains the AWS learning roadmap and long-term study plan.
 ---
 
 ## Month 1–2: AWS Fundamentals
