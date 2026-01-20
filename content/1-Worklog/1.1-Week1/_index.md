@@ -1,5 +1,5 @@
 ---
-title: "Week 1 – Getting Started"
+title: "Week 1 – Internship Orientation and AWS Fundamentals"
 date: 2026-01-10
 weight: 1
 chapter: false
