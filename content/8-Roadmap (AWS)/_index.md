@@ -1,7 +1,7 @@
 ---
 title: "AWS Learning Roadmap"
 date: 2026-01-01
-weight: 7
+weight: 8
 chapter: false
 pre: " <b> 8. </b> "
 ---
