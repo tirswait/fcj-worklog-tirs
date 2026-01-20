@@ -1,7 +1,10 @@
 ---
-title: "AWS Learning Roadmap"
-weight: 8
-chapter: true
+title: "AWS Learning Roadmap with Free Tier"
+date: 2026-01-01
+weight: 1
+chapter: false
+pre: " <b> 1. </b> "
+
 ---
 
 This section contains the AWS learning roadmap and long-term study plan.

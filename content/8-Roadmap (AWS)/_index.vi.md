@@ -1,7 +1,9 @@
 ---
-title: "Lộ trình học AWS"
-weight: 8
-chapter: true
+title: "Lộ trình học AWS với Free Tier"
+date: 2026-01-01
+weight: 1
+chapter: false
+pre: " <b> 1. </b> "
 ---
 
 ## Tháng 1–2: Nền tảng AWS
