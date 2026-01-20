@@ -1,57 +1,46 @@
 ---
-title: "Week 2 Worklog"
-date: 2024-01-01
-weight: 1
+title: "Week 2 – Database and Storage Foundation"
+date: 2026-01-18
+weight: 2
 chapter: false
 pre: " <b> 1.2. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 2 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Understand AWS database and storage fundamentals.
+* Learn different database models: relational, NoSQL, and data warehousing.
+* Explore Amazon S3 storage concepts and lifecycle management.
+* Understand EBS volumes, snapshots, and use cases.
+* Learn how to set up and manage Amazon RDS.
+* Apply knowledge through a hands-on file upload system.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | ---- | ---------- | --------------- | ------------------ |
+| 12/01/2026 (Mon) | - Overview of Database and Storage Foundation course <br> - Introduction to AWS database & storage services <br> - Review course objectives and learning outcomes | 12/01/2026 | 12/01/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 13/01/2026 (Tue) | - Learn Amazon S3 fundamentals <br>&emsp; + S3 buckets <br>&emsp; + Storage classes <br>&emsp; + Object management | 13/01/2026 | 13/01/2026 | https://docs.aws.amazon.com/s3 |
+| 14/01/2026 (Wed) | - Explore S3 lifecycle policies <br> - Understand data lifecycle management <br> - Review data governance and compliance concepts | 14/01/2026 | 14/01/2026 | https://docs.aws.amazon.com/s3 |
+| 15/01/2026 (Thu) | - Learn Amazon EBS concepts <br>&emsp; + EBS volume types <br>&emsp; + Snapshots <br> - Understand backup and recovery strategies | 15/01/2026 | 15/01/2026 | https://docs.aws.amazon.com/ebs |
+| 16/01/2026 (Fri) | - Introduction to Amazon RDS <br>&emsp; + Relational database concepts <br>&emsp; + RDS setup and management | 16/01/2026 | 16/01/2026 | https://docs.aws.amazon.com/rds |
+| 17/01/2026 (Sat) | - Hands-on lab: Build a basic file upload system <br> - Store uploaded files in Amazon S3 <br> - Review security and access control | 17/01/2026 | 17/01/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 18/01/2026 (Sun) | - Review learned concepts <br> - Summarize key takeaways <br> - Prepare for next learning topics | 18/01/2026 | 18/01/2026 | https://cloudjourney.awsstudygroup.com/ |
 
 ### Week 2 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Completed the **Database and Storage Foundation (Level 100)** course successfully.
 
-* Successfully created and configured an AWS Free Tier account.
+* Gained a comprehensive understanding of AWS storage and database services, including:
+  * Amazon S3
+  * Amazon EBS
+  * Amazon RDS
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+* Learned key database models such as **relational**, **NoSQL**, and **data warehousing**, and their use cases in AWS.
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+* Understood best practices for **data modeling**, **backup and recovery**, and **performance optimization**.
 
-* Used AWS CLI to perform basic operations such as:
+* Explored **data security**, **governance**, and **compliance** considerations in AWS storage and database services.
 
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
+* Successfully completed a **hands-on file upload system**, applying practical knowledge of Amazon S3 and access management.
 
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Built a solid foundation for designing scalable and reliable database and storage solutions for future AWS projects.

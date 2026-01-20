@@ -1,59 +1,46 @@
 ---
-title: "Worklog Tuần 2"
-date: 2024-01-01
-weight: 1
+title: "Tuần 2 – Nền tảng Cơ sở dữ liệu và Lưu trữ"
+date: 2026-01-18
+weight: 2
 chapter: false
 pre: " <b> 1.2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+### Mục tiêu Tuần 2:
 
-### Mục tiêu tuần 2:
+* Hiểu các kiến thức nền tảng về cơ sở dữ liệu và lưu trữ trên AWS.
+* Nắm được các mô hình cơ sở dữ liệu: quan hệ, NoSQL và kho dữ liệu.
+* Tìm hiểu dịch vụ lưu trữ Amazon S3 và quản lý vòng đời dữ liệu.
+* Hiểu về Amazon EBS, snapshot và các trường hợp sử dụng.
+* Học cách thiết lập và quản lý cơ sở dữ liệu với Amazon RDS.
+* Áp dụng kiến thức thông qua bài thực hành xây dựng hệ thống upload file.
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### Các công việc thực hiện trong tuần:
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | --------- | ------------ | ---------------- | ------------------ |
+| 12/01/2026 (Thứ Hai) | - Tổng quan khóa học Database and Storage Foundation <br> - Giới thiệu các dịch vụ cơ sở dữ liệu và lưu trữ trên AWS <br> - Xem lại mục tiêu và nội dung khóa học | 12/01/2026 | 12/01/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 13/01/2026 (Thứ Ba) | - Tìm hiểu nền tảng Amazon S3 <br>&emsp; + S3 bucket <br>&emsp; + Các lớp lưu trữ <br>&emsp; + Quản lý đối tượng | 13/01/2026 | 13/01/2026 | https://docs.aws.amazon.com/s3 |
+| 14/01/2026 (Thứ Tư) | - Tìm hiểu chính sách vòng đời (Lifecycle Policy) của S3 <br> - Quản lý vòng đời dữ liệu <br> - Khái niệm về quản trị dữ liệu và tuân thủ | 14/01/2026 | 14/01/2026 | https://docs.aws.amazon.com/s3 |
+| 15/01/2026 (Thứ Năm) | - Học về Amazon EBS <br>&emsp; + Các loại EBS volume <br>&emsp; + Snapshot <br> - Chiến lược sao lưu và khôi phục dữ liệu | 15/01/2026 | 15/01/2026 | https://docs.aws.amazon.com/ebs |
+| 16/01/2026 (Thứ Sáu) | - Giới thiệu Amazon RDS <br>&emsp; + Khái niệm cơ sở dữ liệu quan hệ <br>&emsp; + Thiết lập và quản lý RDS | 16/01/2026 | 16/01/2026 | https://docs.aws.amazon.com/rds |
+| 17/01/2026 (Thứ Bảy) | - Thực hành: Xây dựng hệ thống upload file cơ bản <br> - Lưu trữ file bằng Amazon S3 <br> - Cấu hình bảo mật và phân quyền truy cập | 17/01/2026 | 17/01/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 18/01/2026 (Chủ Nhật) | - Ôn tập toàn bộ kiến thức đã học <br> - Tổng kết nội dung chính <br> - Chuẩn bị cho các chủ đề học tiếp theo | 18/01/2026 | 18/01/2026 | https://cloudjourney.awsstudygroup.com/ |
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Kết quả đạt được trong Tuần 2:
 
+* Hoàn thành khóa học **Database and Storage Foundation (Level 100)**.
 
-### Kết quả đạt được tuần 2:
+* Nắm vững kiến thức tổng quan về các dịch vụ cơ sở dữ liệu và lưu trữ của AWS, bao gồm:
+  * Amazon S3
+  * Amazon EBS
+  * Amazon RDS
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Hiểu rõ các mô hình cơ sở dữ liệu phổ biến như **quan hệ**, **NoSQL** và **kho dữ liệu**, cùng với các trường hợp sử dụng.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Áp dụng các best practices trong **thiết kế dữ liệu**, **sao lưu – khôi phục**, và **tối ưu hiệu năng**.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Nâng cao nhận thức về **bảo mật dữ liệu**, **quản trị dữ liệu** và **tuân thủ** trong môi trường AWS.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+* Hoàn thành bài thực hành **xây dựng hệ thống upload file**, áp dụng kiến thức thực tế với Amazon S3.
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Tạo nền tảng vững chắc để tiếp tục triển khai các giải pháp lưu trữ và cơ sở dữ liệu AWS trong các tuần tiếp theo.
