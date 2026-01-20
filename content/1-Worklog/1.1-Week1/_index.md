@@ -1,6 +1,6 @@
 ---
 title: "Week 1 – Internship Orientation and AWS Fundamentals"
-date: 2026-01-10
+date: 2026-01-11
 weight: 1
 chapter: false
 pre: " <b> 1.1. </b> "
