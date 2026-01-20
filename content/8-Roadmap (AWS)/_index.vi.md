@@ -208,23 +208,29 @@ pre: " <b> 8. </b> "
 ---
 
 ## Tài nguyên học tập
+---
+### [Nền tảng Lab Thực hành AWS](https://specialforce.awsstudygroup.com/)
+
+> Nền tảng học tập và làm lab thực hành AWS thông qua video hướng dẫn chính thức.
+
+---
 
 ### Tài nguyên miễn phí
 
-* AWS Skill Builder
-* AWS Documentation
-* AWS Architecture Center
-* AWS re:Invent Video Library
-* AWS Special Force Portal
-* AWS Study Group (YouTube)
-* Tài liệu hệ thống Lab
+- [AWS Skill Builder](https://skillbuilder.aws/)
+- [AWS Documentation](https://docs.aws.amazon.com/)
+- [AWS Architecture Center](https://aws.amazon.com/architecture/)
+- [AWS re:Invent Video Library](https://www.youtube.com/@AWSEventsChannel)
+- [AWS Special Force Portal](https://aws.amazon.com/partners/)
+- [AWS Study Group (YouTube)](https://www.youtube.com/@AWSStudyGroup)
+- [Tài liệu hệ thống Lab](https://cloudjourney.awsstudygroup.com/)
 
 ### Cộng đồng
 
-* AWS Community Builders
-* AWS User Groups
-* Reddit: r/aws, r/AWSCertifications
-* Discord: AWS Community Servers
-
+- [AWS Community Builders](https://aws.amazon.com/community/community-builders/)
+- [AWS User Groups](https://aws.amazon.com/usergroups/)
+- [Reddit: r/aws](https://www.reddit.com/r/aws/)
+- [Reddit: r/AWSCertifications](https://www.reddit.com/r/AWSCertifications/)
+- [Discord: AWS Community Servers](https://discord.gg/aws)
 ---
 
