@@ -209,7 +209,7 @@ pre: " <b> 8. </b> "
 
 ## Tài nguyên học tập
 ---
-### [Nền tảng Lab Thực hành AWS](https://specialforce.awsstudygroup.com/)
+- [Nền tảng Lab Thực hành AWS](https://specialforce.awsstudygroup.com/)
 
 > Nền tảng học tập và làm lab thực hành AWS thông qua video hướng dẫn chính thức.
 
