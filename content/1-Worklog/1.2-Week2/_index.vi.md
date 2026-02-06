@@ -1,7 +1,7 @@
 ---
 title: "Tuần 2 – Nền tảng Cơ sở dữ liệu và Lưu trữ"
 date: 2026-01-18
-weight: 1
+weight: 2
 chapter: false
 pre: " <b> 1.2. </b> "
 ---
