@@ -1,57 +1,43 @@
 ---
-title: "Week 3 Worklog"
-date: 2024-01-01
-weight: 1
+title: "Week 3 – Networking"
+date: 2026-01-25
+weight: 3
 chapter: false
 pre: " <b> 1.3. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 3 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Understand core AWS networking concepts.
+* Learn how to design and configure a Virtual Private Cloud (VPC).
+* Differentiate between Security Groups and Network ACLs.
+* Explore Internet Gateway and NAT Gateway.
+* Build a multi-tier network architecture on AWS.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| 19/01/2026 (Mon) | - Introduction to AWS networking <br> - Overview of VPC concepts and components | 19/01/2026 | 19/01/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 20/01/2026 (Tue) | - Create and configure a VPC <br> - Set up subnets (public & private) <br> - Configure route tables | 20/01/2026 | 20/01/2026 | https://docs.aws.amazon.com/vpc |
+| 21/01/2026 (Wed) | - Learn Security Groups <br> - Learn Network ACLs <br> - Compare Security Groups vs NACLs | 21/01/2026 | 21/01/2026 | https://docs.aws.amazon.com/vpc |
+| 22/01/2026 (Thu) | - Configure Internet Gateway <br> - Set up NAT Gateway <br> - Enable internet access for resources | 22/01/2026 | 22/01/2026 | https://docs.aws.amazon.com/vpc |
+| 23/01/2026 (Fri) | - Design multi-tier architecture <br> - Separate web, application, and database layers | 23/01/2026 | 23/01/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 24/01/2026 (Sat) | - Hands-on: Deploy multi-tier network architecture <br> - Test connectivity and security rules | 24/01/2026 | 24/01/2026 | https://cloudjourney.awsstudygroup.com/ |
 
 ### Week 3 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Gained a solid understanding of AWS networking fundamentals and VPC architecture.
 
-* Successfully created and configured an AWS Free Tier account.
+* Successfully created and configured a custom VPC with public and private subnets.
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+* Understood the differences between Security Groups and Network ACLs, including their roles in network security.
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+* Configured Internet Gateway and NAT Gateway to enable secure internet access.
 
-* Used AWS CLI to perform basic operations such as:
+* Designed and implemented a multi-tier network architecture.
 
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
+* Learned how to isolate application layers (web, application, database) for better security and scalability.
 
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Improved troubleshooting skills related to network connectivity and routing.
+
+* Strengthened practical knowledge of cloud networking in AWS environments.

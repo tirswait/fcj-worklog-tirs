@@ -1,59 +1,43 @@
 ---
-title: "Worklog Tuần 3"
-date: 2024-01-01
-weight: 1
+title: "Tuần 3 – Networking trên AWS"
+date: 2026-01-25
+weight: 3
 chapter: false
 pre: " <b> 1.3. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+### Mục tiêu Tuần 3:
 
-### Mục tiêu tuần 3:
+* Hiểu các khái niệm mạng cơ bản trong AWS.
+* Nắm được cách thiết kế và cấu hình Virtual Private Cloud (VPC).
+* Phân biệt Security Groups và Network ACLs.
+* Tìm hiểu cơ chế hoạt động của Internet Gateway và NAT Gateway.
+* Xây dựng kiến trúc mạng nhiều tầng (multi-tier) trên AWS.
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### Các công việc thực hiện trong tuần:
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | --------- | ------------ | ---------------- | ------------------ |
+| 19/01/2026 (Thứ Hai) | - Giới thiệu về networking trong AWS <br> - Tổng quan về VPC và các thành phần | 19/01/2026 | 19/01/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 20/01/2026 (Thứ Ba) | - Tạo và cấu hình VPC <br> - Thiết lập subnet (public & private) <br> - Cấu hình route table | 20/01/2026 | 20/01/2026 | https://docs.aws.amazon.com/vpc |
+| 21/01/2026 (Thứ Tư) | - Tìm hiểu Security Groups <br> - Tìm hiểu Network ACLs <br> - So sánh sự khác biệt giữa hai cơ chế bảo mật | 21/01/2026 | 21/01/2026 | https://docs.aws.amazon.com/vpc |
+| 22/01/2026 (Thứ Năm) | - Cấu hình Internet Gateway <br> - Thiết lập NAT Gateway <br> - Cho phép tài nguyên trong private subnet truy cập internet | 22/01/2026 | 22/01/2026 | https://docs.aws.amazon.com/vpc |
+| 23/01/2026 (Thứ Sáu) | - Thiết kế kiến trúc multi-tier <br> - Phân tách các tầng: web, application, database | 23/01/2026 | 23/01/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 24/01/2026 (Thứ Bảy) | - Thực hành triển khai kiến trúc mạng multi-tier <br> - Kiểm tra kết nối giữa các tầng và cấu hình bảo mật | 24/01/2026 | 24/01/2026 | https://cloudjourney.awsstudygroup.com/ |
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Kết quả đạt được trong Tuần 3:
 
+* Hiểu rõ các khái niệm nền tảng về networking trong AWS, đặc biệt là VPC.
 
-### Kết quả đạt được tuần 3:
+* Tạo và cấu hình thành công một VPC hoàn chỉnh với các subnet public và private.
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Phân biệt được Security Groups và Network ACLs, hiểu rõ vai trò của từng loại trong bảo mật hệ thống.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Cấu hình thành công Internet Gateway và NAT Gateway để đảm bảo truy cập internet an toàn.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Thiết kế và triển khai được kiến trúc mạng nhiều tầng (multi-tier).
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+* Nắm được cách tách biệt các tầng ứng dụng (web, application, database) nhằm tăng tính bảo mật và khả năng mở rộng.
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+* Cải thiện kỹ năng xử lý sự cố liên quan đến kết nối mạng và định tuyến.
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Xây dựng nền tảng vững chắc về networking để phục vụ cho các nội dung nâng cao trong các tuần tiếp theo.
