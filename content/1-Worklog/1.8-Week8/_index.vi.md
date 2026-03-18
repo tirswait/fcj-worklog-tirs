@@ -1,59 +1,43 @@
 ---
-title: "Worklog Tuần 8"
-date: 2024-01-01
-weight: 1
+title: "Tuần 8 – Monitoring & Logging trên AWS"
+date: 2026-03-01
+weight: 8
 chapter: false
 pre: " <b> 1.8. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+### Mục tiêu Tuần 8:
 
-### Mục tiêu tuần 8:
+* Hiểu các dịch vụ giám sát và logging trong AWS.
+* Làm việc với Amazon CloudWatch để theo dõi metrics và tạo cảnh báo.
+* Tìm hiểu AWS CloudTrail để ghi log hoạt động hệ thống.
+* Nắm được cơ chế distributed tracing với AWS X-Ray.
+* Xây dựng hệ thống giám sát end-to-end cho ứng dụng.
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### Các công việc thực hiện trong tuần:
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | --------- | ------------ | ---------------- | ------------------ |
+| 23/02/2026 (Thứ Hai) | - Giới thiệu về monitoring & logging trên AWS <br> - Tổng quan Amazon CloudWatch | 23/02/2026 | 23/02/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 24/02/2026 (Thứ Ba) | - Làm việc với CloudWatch metrics <br> - Tạo dashboard và alarms | 24/02/2026 | 24/02/2026 | https://docs.aws.amazon.com/cloudwatch |
+| 25/02/2026 (Thứ Tư) | - Tìm hiểu AWS CloudTrail <br> - Ghi log hoạt động và theo dõi thay đổi | 25/02/2026 | 25/02/2026 | https://docs.aws.amazon.com/cloudtrail |
+| 26/02/2026 (Thứ Năm) | - Giới thiệu AWS X-Ray <br> - Theo dõi request qua các service | 26/02/2026 | 26/02/2026 | https://docs.aws.amazon.com/xray |
+| 27/02/2026 (Thứ Sáu) | - Phân tích log và trace <br> - Kết hợp CloudWatch, CloudTrail và X-Ray | 27/02/2026 | 27/02/2026 | https://docs.aws.amazon.com |
+| 28/02/2026 (Thứ Bảy) | - Thực hành: Thiết lập hệ thống monitoring end-to-end <br> - Kiểm tra cảnh báo và log hệ thống | 28/02/2026 | 28/02/2026 | https://cloudjourney.awsstudygroup.com/ |
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Kết quả đạt được trong Tuần 8:
 
+* Hiểu rõ vai trò của monitoring và logging trong hệ thống cloud.
 
-### Kết quả đạt được tuần 8:
+* Sử dụng thành thạo Amazon CloudWatch để theo dõi metrics và tạo cảnh báo.
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Ghi nhận và phân tích log hệ thống với AWS CloudTrail.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Áp dụng AWS X-Ray để theo dõi luồng request trong hệ thống phân tán.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Kết hợp nhiều dịch vụ để xây dựng hệ thống giám sát toàn diện.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+* Phát hiện và xử lý sự cố dựa trên dữ liệu monitoring và logging.
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+* Nâng cao khả năng vận hành và tối ưu hệ thống cloud.
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Tạo nền tảng cho việc triển khai hệ thống production ổn định và đáng tin cậy.

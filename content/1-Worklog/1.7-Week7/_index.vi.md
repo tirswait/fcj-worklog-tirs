@@ -1,59 +1,43 @@
 ---
-title: "Worklog Tuần 7"
-date: 2024-01-01
-weight: 1
+title: "Tuần 7 – Containers & Orchestration trên AWS"
+date: 2026-02-22
+weight: 7
 chapter: false
 pre: " <b> 1.7. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+### Mục tiêu Tuần 7:
 
-### Mục tiêu tuần 7:
+* Hiểu các khái niệm cơ bản về container và Docker.
+* Học cách build và quản lý container image.
+* Tìm hiểu Amazon ECS (Elastic Container Service).
+* Làm việc với Amazon ECR (Elastic Container Registry).
+* Triển khai ứng dụng web dạng container trên AWS.
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### Các công việc thực hiện trong tuần:
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | --------- | ------------ | ---------------- | ------------------ |
+| 16/02/2026 (Thứ Hai) | - Giới thiệu về container và Docker <br> - Cài đặt Docker và chạy container đầu tiên | 16/02/2026 | 16/02/2026 | https://docs.docker.com |
+| 17/02/2026 (Thứ Ba) | - Build Docker image <br> - Làm việc với Dockerfile <br> - Quản lý container local | 17/02/2026 | 17/02/2026 | https://docs.docker.com |
+| 18/02/2026 (Thứ Tư) | - Giới thiệu Amazon ECS <br> - Tạo cluster và service | 18/02/2026 | 18/02/2026 | https://docs.aws.amazon.com/ecs |
+| 19/02/2026 (Thứ Năm) | - Tìm hiểu Amazon ECR <br> - Push và pull Docker image từ registry | 19/02/2026 | 19/02/2026 | https://docs.aws.amazon.com/ecr |
+| 20/02/2026 (Thứ Sáu) | - Kết nối ECS với ECR <br> - Triển khai container lên ECS | 20/02/2026 | 20/02/2026 | https://docs.aws.amazon.com/ecs |
+| 21/02/2026 (Thứ Bảy) | - Thực hành: Deploy ứng dụng web dạng container <br> - Kiểm tra hoạt động và scale service | 21/02/2026 | 21/02/2026 | https://cloudjourney.awsstudygroup.com/ |
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Kết quả đạt được trong Tuần 7:
 
+* Hiểu rõ kiến thức nền tảng về container và Docker.
 
-### Kết quả đạt được tuần 7:
+* Build và quản lý Docker image thành công.
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Làm quen với Amazon ECS và cách tổ chức cluster, service.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Sử dụng Amazon ECR để lưu trữ và quản lý container image.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Triển khai thành công ứng dụng container trên AWS.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+* Hiểu cách tích hợp Docker với các dịch vụ AWS.
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+* Nâng cao kỹ năng triển khai ứng dụng theo hướng microservices.
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Tăng khả năng xây dựng hệ thống cloud linh hoạt và dễ mở rộng.

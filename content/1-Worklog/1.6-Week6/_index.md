@@ -1,57 +1,43 @@
 ---
-title: "Week 6 Worklog"
-date: 2024-01-01
-weight: 1
+title: "Week 6 – Application Integration"
+date: 2026-02-15
+weight: 6
 chapter: false
 pre: " <b> 1.6. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 6 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Understand AWS application integration services.
+* Learn about Amazon SQS and SNS messaging services.
+* Explore event routing using EventBridge.
+* Learn how to build workflows with AWS Step Functions.
+* Build an event-driven architecture.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| 09/02/2026 (Mon) | - Introduction to AWS Application Integration <br> - Overview of Amazon SQS and SNS | 09/02/2026 | 09/02/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 10/02/2026 (Tue) | - Work with Amazon SQS <br> - Create queues and send/receive messages | 10/02/2026 | 10/02/2026 | https://docs.aws.amazon.com/sqs |
+| 11/02/2026 (Wed) | - Learn Amazon SNS <br> - Configure publish/subscribe model | 11/02/2026 | 11/02/2026 | https://docs.aws.amazon.com/sns |
+| 12/02/2026 (Thu) | - Learn Amazon EventBridge <br> - Configure event routing between services | 12/02/2026 | 12/02/2026 | https://docs.aws.amazon.com/eventbridge |
+| 13/02/2026 (Fri) | - Introduction to AWS Step Functions <br> - Build simple workflows | 13/02/2026 | 13/02/2026 | https://docs.aws.amazon.com/step-functions |
+| 14/02/2026 (Sat) | - Hands-on: Build event-driven architecture <br> - Integrate SQS, SNS, Lambda, and EventBridge | 14/02/2026 | 14/02/2026 | https://cloudjourney.awsstudygroup.com/ |
 
 ### Week 6 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Gained a clear understanding of AWS application integration services.
 
-* Successfully created and configured an AWS Free Tier account.
+* Worked effectively with Amazon SQS for message queue processing.
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+* Implemented publish/subscribe messaging using Amazon SNS.
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+* Successfully configured EventBridge for event routing across services.
 
-* Used AWS CLI to perform basic operations such as:
+* Built basic workflows using AWS Step Functions.
 
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
+* Developed an event-driven architecture integrating multiple AWS services.
 
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Learned how AWS services interact in asynchronous systems.
+
+* Improved ability to design scalable and loosely coupled cloud architectures.

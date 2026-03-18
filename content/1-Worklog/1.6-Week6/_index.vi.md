@@ -1,58 +1,43 @@
 ---
-title: "Worklog Tuần 6"
-date: 2024-01-01
-weight: 1
+title: "Tuần 6 – Application Integration trên AWS"
+date: 2026-02-15
+weight: 6
 chapter: false
 pre: " <b> 1.6. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+### Mục tiêu Tuần 6:
 
-### Mục tiêu tuần 6:
+* Hiểu các dịch vụ tích hợp ứng dụng trong AWS.
+* Tìm hiểu dịch vụ nhắn tin Amazon SQS và SNS.
+* Nắm được cơ chế định tuyến sự kiện với EventBridge.
+* Học cách xây dựng workflow với AWS Step Functions.
+* Xây dựng kiến trúc hướng sự kiện (event-driven architecture).
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### Các công việc thực hiện trong tuần:
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | --------- | ------------ | ---------------- | ------------------ |
+| 09/02/2026 (Thứ Hai) | - Giới thiệu về Application Integration trên AWS <br> - Tổng quan Amazon SQS và SNS | 09/02/2026 | 09/02/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 10/02/2026 (Thứ Ba) | - Làm việc với Amazon SQS <br> - Tạo queue và gửi/nhận message | 10/02/2026 | 10/02/2026 | https://docs.aws.amazon.com/sqs |
+| 11/02/2026 (Thứ Tư) | - Tìm hiểu Amazon SNS <br> - Cấu hình publish/subscribe model | 11/02/2026 | 11/02/2026 | https://docs.aws.amazon.com/sns |
+| 12/02/2026 (Thứ Năm) | - Tìm hiểu Amazon EventBridge <br> - Cấu hình event routing giữa các service | 12/02/2026 | 12/02/2026 | https://docs.aws.amazon.com/eventbridge |
+| 13/02/2026 (Thứ Sáu) | - Giới thiệu AWS Step Functions <br> - Xây dựng workflow đơn giản | 13/02/2026 | 13/02/2026 | https://docs.aws.amazon.com/step-functions |
+| 14/02/2026 (Thứ Bảy) | - Thực hành: Xây dựng kiến trúc event-driven <br> - Kết nối SQS, SNS, Lambda và EventBridge | 14/02/2026 | 14/02/2026 | https://cloudjourney.awsstudygroup.com/ |
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Kết quả đạt được trong Tuần 6:
 
+* Hiểu rõ vai trò của các dịch vụ tích hợp ứng dụng trong AWS.
 
-### Kết quả đạt được tuần 6:
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Làm việc thành thạo với Amazon SQS để xử lý message queue.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Áp dụng mô hình publish/subscribe với Amazon SNS.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Cấu hình thành công EventBridge để định tuyến sự kiện giữa các dịch vụ.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+* Xây dựng workflow cơ bản bằng AWS Step Functions.
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+* Triển khai được kiến trúc hướng sự kiện (event-driven architecture).
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
+* Hiểu cách các dịch vụ AWS phối hợp để tạo hệ thống xử lý bất đồng bộ.
 
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Nâng cao khả năng thiết kế hệ thống cloud linh hoạt và mở rộng tốt.
