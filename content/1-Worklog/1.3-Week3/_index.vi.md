@@ -1,7 +1,7 @@
 ---
 title: "Tuần 3 – Networking trên AWS"
 date: 2026-01-25
-weight: 3
+weight: 1
 chapter: false
 pre: " <b> 1.3. </b> "
 ---
