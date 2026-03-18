@@ -1,7 +1,7 @@
 ---
 title: "Week 3 – Networking"
 date: 2026-01-25
-weight: 1
+weight: 3
 chapter: false
 pre: " <b> 1.3. </b> "
 ---

@@ -1,59 +1,43 @@
 ---
-title: "Worklog Tuần 4"
-date: 2024-01-01
-weight: 1
+title: "Tuần 4 – Identity & Security trên AWS"
+date: 2026-02-01
+weight: 4
 chapter: false
 pre: " <b> 1.4. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+### Mục tiêu Tuần 4:
 
-### Mục tiêu tuần 4:
+* Hiểu các khái niệm quản lý danh tính và bảo mật trong AWS.
+* Học cách tạo và quản lý IAM users, groups và roles.
+* Nắm được cách hoạt động của policies và phân quyền truy cập.
+* Tìm hiểu cơ chế xác thực đa yếu tố (MFA).
+* Xây dựng môi trường AWS an toàn cho nhiều người dùng.
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### Các công việc thực hiện trong tuần:
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | --------- | ------------ | ---------------- | ------------------ |
+| 26/01/2026 (Thứ Hai) | - Giới thiệu AWS Identity & Access Management (IAM) <br> - Tổng quan users, groups và roles | 26/01/2026 | 26/01/2026 | https://docs.aws.amazon.com/iam |
+| 27/01/2026 (Thứ Ba) | - Tạo IAM users và groups <br> - Phân quyền truy cập theo nhóm | 27/01/2026 | 27/01/2026 | https://docs.aws.amazon.com/iam |
+| 28/01/2026 (Thứ Tư) | - Tìm hiểu IAM roles <br> - Áp dụng roles cho EC2 và các dịch vụ AWS | 28/01/2026 | 28/01/2026 | https://docs.aws.amazon.com/iam |
+| 29/01/2026 (Thứ Năm) | - Tìm hiểu IAM policies <br> - Cấu hình quyền truy cập chi tiết (JSON policy) | 29/01/2026 | 29/01/2026 | https://docs.aws.amazon.com/iam |
+| 30/01/2026 (Thứ Sáu) | - Thiết lập Multi-Factor Authentication (MFA) <br> - Tăng cường bảo mật tài khoản | 30/01/2026 | 30/01/2026 | https://docs.aws.amazon.com/iam |
+| 31/01/2026 (Thứ Bảy) | - Thực hành: Xây dựng môi trường AWS nhiều người dùng an toàn <br> - Kiểm tra phân quyền truy cập | 31/01/2026 | 31/01/2026 | https://cloudjourney.awsstudygroup.com/ |
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Kết quả đạt được trong Tuần 4:
 
+* Hiểu rõ các khái niệm về quản lý danh tính và bảo mật trong AWS.
 
-### Kết quả đạt được tuần 4:
+* Tạo và quản lý thành công IAM users, groups và roles.
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Nắm được cách sử dụng policies để kiểm soát quyền truy cập chi tiết.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Áp dụng nguyên tắc phân quyền tối thiểu (least privilege).
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Thiết lập thành công xác thực đa yếu tố (MFA) cho tài khoản.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+* Xây dựng được môi trường AWS an toàn cho nhiều người dùng.
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+* Nâng cao nhận thức về bảo mật trong môi trường cloud.
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Tạo nền tảng vững chắc cho các nội dung bảo mật nâng cao trong các tuần tiếp theo.

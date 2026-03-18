@@ -1,7 +1,7 @@
 ---
 title: "Week 2 – Database and Storage Foundation"
 date: 2026-01-18
-weight: 1
+weight: 2
 chapter: false
 pre: " <b> 1.2. </b> "
 ---

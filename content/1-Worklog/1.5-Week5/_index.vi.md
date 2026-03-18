@@ -1,59 +1,44 @@
 ---
-title: "Worklog Tuần 5"
-date: 2024-01-01
-weight: 1
+title: "Tuần 5 – Serverless Computing trên AWS"
+date: 2026-02-08
+weight: 5
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+### Mục tiêu Tuần 5:
 
-### Mục tiêu tuần 5:
+* Hiểu kiến trúc serverless và cách AWS triển khai mô hình này.
+* Học cách tạo và quản lý AWS Lambda functions.
+* Tìm hiểu cơ chế event trigger cho Lambda.
+* Cấu hình API Gateway để xây dựng API.
+* Làm việc với cơ sở dữ liệu NoSQL DynamoDB.
+* Xây dựng backend REST API sử dụng kiến trúc serverless.
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### Các công việc thực hiện trong tuần:
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | --------- | ------------ | ---------------- | ------------------ |
+| 02/02/2026 (Thứ Hai) | - Giới thiệu về serverless computing <br> - Tổng quan AWS Lambda và các trường hợp sử dụng | 02/02/2026 | 02/02/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 03/02/2026 (Thứ Ba) | - Tạo và triển khai Lambda function <br> - Viết code xử lý cơ bản | 03/02/2026 | 03/02/2026 | https://docs.aws.amazon.com/lambda |
+| 04/02/2026 (Thứ Tư) | - Cấu hình event trigger cho Lambda <br> - Kết nối với S3 hoặc API Gateway | 04/02/2026 | 04/02/2026 | https://docs.aws.amazon.com/lambda |
+| 05/02/2026 (Thứ Năm) | - Giới thiệu API Gateway <br> - Tạo và cấu hình REST API endpoint | 05/02/2026 | 05/02/2026 | https://docs.aws.amazon.com/apigateway |
+| 06/02/2026 (Thứ Sáu) | - Tìm hiểu DynamoDB <br> - Thực hiện các thao tác CRUD (Create, Read, Update, Delete) | 06/02/2026 | 06/02/2026 | https://docs.aws.amazon.com/dynamodb |
+| 07/02/2026 (Thứ Bảy) | - Thực hành: Xây dựng backend REST API <br> - Kết nối Lambda + API Gateway + DynamoDB | 07/02/2026 | 07/02/2026 | https://cloudjourney.awsstudygroup.com/ |
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Kết quả đạt được trong Tuần 5:
 
+* Hiểu rõ kiến trúc serverless và lợi ích của việc không cần quản lý server.
 
-### Kết quả đạt được tuần 5:
+* Tạo và triển khai thành công AWS Lambda function.
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Cấu hình được event trigger để tự động hóa xử lý.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Xây dựng và cấu hình REST API thông qua API Gateway.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Làm việc hiệu quả với DynamoDB và thực hiện các thao tác dữ liệu cơ bản.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+* Xây dựng được backend REST API hoàn chỉnh sử dụng kiến trúc serverless.
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+* Hiểu cách tích hợp các dịch vụ AWS để tạo thành một hệ thống hoàn chỉnh.
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Nâng cao kỹ năng xây dựng ứng dụng cloud hiện đại, linh hoạt và dễ mở rộng.
