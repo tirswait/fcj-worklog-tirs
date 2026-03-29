@@ -2,7 +2,7 @@
 title: "Chia sẻ, đóng góp ý kiến"
 date: 2026-03-30
 weight: 6
-chapter: true
+chapter: false
 pre: " <b> 6. </b> "
 ---
 
