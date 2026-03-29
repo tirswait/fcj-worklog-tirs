@@ -8,6 +8,15 @@ pre: " <b> 3.1. </b> "
 
 # Summary Report: “AWS re:Invent 2025 Recap (Vietnam)”
 
+## Event Information
+
+| Item | Details |
+| --- | --- |
+| **Event Name** | AWS re:Invent 2025 Recap (Vietnam) |
+| **Date & Time** | 27/01/2026 |
+| **Location** | AWS Vietnam Office (Floor 26 & 36), Ho Chi Minh City |
+| **Role** | Attendee (FCJ Cloud Intern) |
+
 ### Event Objectives
 
 - Review key announcements and innovations from AWS re:Invent 2025  

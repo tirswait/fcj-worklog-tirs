@@ -13,7 +13,7 @@ pre: " <b> 3.2. </b> "
 | Item | Details |
 | --- | --- |
 | **Event Name** | AI Agents, Prompt Engineering, and AIoT Projects on AWS |
-| **Date & Time** | March 14, 2026 |
+| **Date & Time** | 14/03/2026 |
 | **Location** | AWS Vietnam Office (Floor 26 & 36), Ho Chi Minh City |
 | **Role** | Attendee (FCJ Cloud Intern) |
 
