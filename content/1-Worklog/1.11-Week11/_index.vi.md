@@ -1,59 +1,43 @@
 ---
-title: "Worklog Tuần 11"
-date: 2024-01-01
-weight: 2
+title: "Tuần 11 – Advanced Security trên AWS"
+date: 2026-03-22
+weight: 11
 chapter: false
 pre: " <b> 1.11. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+### Mục tiêu Tuần 11:
 
-### Mục tiêu tuần 11:
+* Hiểu các dịch vụ bảo mật nâng cao trong AWS.
+* Tìm hiểu AWS WAF và AWS Shield để bảo vệ ứng dụng.
+* Học cách quản lý secrets với AWS Secrets Manager.
+* Làm việc với AWS Certificate Manager để quản lý SSL/TLS.
+* Xây dựng môi trường production an toàn.
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### Các công việc thực hiện trong tuần:
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | --------- | ------------ | ---------------- | ------------------ |
+| 16/03/2026 (Thứ Hai) | - Giới thiệu bảo mật nâng cao trên AWS <br> - Tổng quan AWS WAF và AWS Shield | 16/03/2026 | 16/03/2026 | https://docs.aws.amazon.com/waf |
+| 17/03/2026 (Thứ Ba) | - Cấu hình AWS WAF <br> - Thiết lập rule bảo vệ ứng dụng web | 17/03/2026 | 17/03/2026 | https://docs.aws.amazon.com/waf |
+| 18/03/2026 (Thứ Tư) | - Tìm hiểu AWS Shield <br> - Bảo vệ chống DDoS | 18/03/2026 | 18/03/2026 | https://docs.aws.amazon.com/shield |
+| 19/03/2026 (Thứ Năm) | - Làm việc với AWS Secrets Manager <br> - Lưu trữ và quản lý thông tin nhạy cảm | 19/03/2026 | 19/03/2026 | https://docs.aws.amazon.com/secretsmanager |
+| 20/03/2026 (Thứ Sáu) | - Sử dụng AWS Certificate Manager <br> - Cấu hình SSL/TLS cho ứng dụng | 20/03/2026 | 20/03/2026 | https://docs.aws.amazon.com/acm |
+| 21/03/2026 (Thứ Bảy) | - Thực hành: Bảo mật môi trường production <br> - Kết hợp WAF, SSL và secrets | 21/03/2026 | 21/03/2026 | https://cloudjourney.awsstudygroup.com/ |
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Kết quả đạt được trong Tuần 11:
 
+* Hiểu rõ các giải pháp bảo mật nâng cao trong AWS.
 
-### Kết quả đạt được tuần 11:
+* Cấu hình AWS WAF để bảo vệ ứng dụng web khỏi các cuộc tấn công phổ biến.
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Nắm được cơ chế chống DDoS với AWS Shield.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Sử dụng AWS Secrets Manager để quản lý thông tin nhạy cảm một cách an toàn.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Cấu hình SSL/TLS thông qua AWS Certificate Manager.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+* Xây dựng môi trường production an toàn và tuân thủ best practices.
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+* Nâng cao nhận thức về bảo mật trong hệ thống cloud.
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Sẵn sàng triển khai các hệ thống AWS với mức độ bảo mật cao.

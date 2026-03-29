@@ -1,58 +1,43 @@
 ---
-title: "Worklog Tuần 12"
-date: 2024-01-01
-weight: 2
+title: "Tuần 12 – Optimization & Best Practices trên AWS"
+date: 2026-03-29
+weight: 12
 chapter: false
-pre: " <b> 1.12 </b> "
+pre: " <b> 1.12. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
-### Mục tiêu tuần 12:
+### Mục tiêu Tuần 12:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Hiểu các chiến lược tối ưu chi phí trên AWS.
+* Tìm hiểu cách tối ưu hiệu năng hệ thống.
+* Nắm được các phương án disaster recovery (DR).
+* Áp dụng best practices trong thiết kế hệ thống cloud.
+* Xây dựng kiến trúc production-ready.
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Các công việc thực hiện trong tuần:
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | --------- | ------------ | ---------------- | ------------------ |
+| 23/03/2026 (Thứ Hai) | - Giới thiệu tối ưu hệ thống trên AWS <br> - Tổng quan chiến lược tối ưu chi phí | 23/03/2026 | 23/03/2026 | https://docs.aws.amazon.com/wellarchitected |
+| 24/03/2026 (Thứ Ba) | - Phân tích chi phí <br> - Áp dụng cost optimization (rightsizing, reserved instances) | 24/03/2026 | 24/03/2026 | https://docs.aws.amazon.com |
+| 25/03/2026 (Thứ Tư) | - Tối ưu hiệu năng hệ thống <br> - Sử dụng caching và scaling | 25/03/2026 | 25/03/2026 | https://docs.aws.amazon.com |
+| 26/03/2026 (Thứ Năm) | - Tìm hiểu disaster recovery <br> - Các mô hình backup và failover | 26/03/2026 | 26/03/2026 | https://docs.aws.amazon.com |
+| 27/03/2026 (Thứ Sáu) | - Áp dụng AWS Well-Architected Framework <br> - Đánh giá hệ thống theo best practices | 27/03/2026 | 27/03/2026 | https://docs.aws.amazon.com/wellarchitected |
+| 28/03/2026 (Thứ Bảy) | - Thực hành: Xây dựng kiến trúc production-ready <br> - Tối ưu chi phí, hiệu năng và độ sẵn sàng | 28/03/2026 | 28/03/2026 | https://cloudjourney.awsstudygroup.com/ |
 
+### Kết quả đạt được trong Tuần 12:
 
-### Kết quả đạt được tuần 12:
+* Hiểu rõ các chiến lược tối ưu chi phí và giảm thiểu chi tiêu không cần thiết.
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Áp dụng các kỹ thuật tối ưu hiệu năng để cải thiện tốc độ và khả năng xử lý của hệ thống.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Nắm được các phương án disaster recovery và đảm bảo tính sẵn sàng cao.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Áp dụng AWS Well-Architected Framework vào thiết kế hệ thống.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+* Xây dựng được kiến trúc production-ready đáp ứng các tiêu chí về hiệu năng, chi phí và độ tin cậy.
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+* Cải thiện khả năng đánh giá và tối ưu hệ thống cloud.
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
+* Hoàn thiện kiến thức tổng thể về AWS sau chương trình thực tập.
 
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Sẵn sàng triển khai các hệ thống thực tế với tiêu chuẩn cao.

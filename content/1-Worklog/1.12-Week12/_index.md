@@ -1,57 +1,43 @@
 ---
-title: "Week 12 Worklog"
-date: 2024-01-01
-weight: 2
+title: "Week 12 – Optimization & Best Practices"
+date: 2026-03-29
+weight: 12
 chapter: false
 pre: " <b> 1.12. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 12 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Understand cost optimization strategies in AWS.
+* Learn performance tuning techniques.
+* Explore disaster recovery planning.
+* Apply AWS best practices in system design.
+* Build a production-ready architecture.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| 23/03/2026 (Mon) | - Introduction to system optimization <br> - Overview of cost optimization strategies | 23/03/2026 | 23/03/2026 | https://docs.aws.amazon.com/wellarchitected |
+| 24/03/2026 (Tue) | - Analyze costs <br> - Apply cost optimization techniques (rightsizing, reserved instances) | 24/03/2026 | 24/03/2026 | https://docs.aws.amazon.com |
+| 25/03/2026 (Wed) | - Optimize system performance <br> - Use caching and scaling strategies | 25/03/2026 | 25/03/2026 | https://docs.aws.amazon.com |
+| 26/03/2026 (Thu) | - Learn disaster recovery strategies <br> - Backup and failover models | 26/03/2026 | 26/03/2026 | https://docs.aws.amazon.com |
+| 27/03/2026 (Fri) | - Apply AWS Well-Architected Framework <br> - Evaluate system based on best practices | 27/03/2026 | 27/03/2026 | https://docs.aws.amazon.com/wellarchitected |
+| 28/03/2026 (Sat) | - Hands-on: Build production-ready architecture <br> - Optimize cost, performance, and availability | 28/03/2026 | 28/03/2026 | https://cloudjourney.awsstudygroup.com/ |
 
 ### Week 12 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Gained a strong understanding of cost optimization strategies.
 
-* Successfully created and configured an AWS Free Tier account.
+* Applied performance tuning techniques to improve system efficiency.
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+* Learned disaster recovery approaches to ensure high availability.
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+* Applied AWS Well-Architected Framework principles.
 
-* Used AWS CLI to perform basic operations such as:
+* Built a production-ready architecture meeting performance, cost, and reliability requirements.
 
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
+* Improved ability to evaluate and optimize cloud systems.
 
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Completed the internship with comprehensive AWS knowledge.
+
+* Became ready to design and deploy real-world cloud solutions.

@@ -1,59 +1,43 @@
 ---
-title: "Worklog Tuần 10"
-date: 2024-01-01
-weight: 2
+title: "Tuần 10 – DevOps & CI/CD trên AWS"
+date: 2026-03-15
+weight: 10
 chapter: false
 pre: " <b> 1.10. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+### Mục tiêu Tuần 10:
 
-### Mục tiêu tuần 10:
+* Hiểu các khái niệm DevOps và CI/CD trong AWS.
+* Làm việc với các dịch vụ CodeCommit, CodeBuild và CodeDeploy.
+* Tự động hóa quy trình triển khai với CodePipeline.
+* Tìm hiểu Infrastructure as Code (IaC) với AWS CloudFormation.
+* Xây dựng pipeline triển khai tự động.
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### Các công việc thực hiện trong tuần:
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | --------- | ------------ | ---------------- | ------------------ |
+| 09/03/2026 (Thứ Hai) | - Giới thiệu DevOps và CI/CD <br> - Tổng quan các dịch vụ Code* trên AWS | 09/03/2026 | 09/03/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 10/03/2026 (Thứ Ba) | - Làm việc với CodeCommit <br> - Quản lý source code repository | 10/03/2026 | 10/03/2026 | https://docs.aws.amazon.com/codecommit |
+| 11/03/2026 (Thứ Tư) | - Sử dụng CodeBuild <br> - Build và test ứng dụng tự động | 11/03/2026 | 11/03/2026 | https://docs.aws.amazon.com/codebuild |
+| 12/03/2026 (Thứ Năm) | - Sử dụng CodeDeploy <br> - Triển khai ứng dụng lên EC2/Lambda | 12/03/2026 | 12/03/2026 | https://docs.aws.amazon.com/codedeploy |
+| 13/03/2026 (Thứ Sáu) | - Cấu hình CodePipeline <br> - Tự động hóa quy trình CI/CD | 13/03/2026 | 13/03/2026 | https://docs.aws.amazon.com/codepipeline |
+| 14/03/2026 (Thứ Bảy) | - Thực hành: Xây dựng pipeline triển khai tự động <br> - Kết hợp CodeCommit + CodeBuild + CodeDeploy | 14/03/2026 | 14/03/2026 | https://cloudjourney.awsstudygroup.com/ |
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Kết quả đạt được trong Tuần 10:
 
+* Hiểu rõ quy trình DevOps và CI/CD trong môi trường AWS.
 
-### Kết quả đạt được tuần 10:
+* Sử dụng thành thạo các dịch vụ CodeCommit, CodeBuild và CodeDeploy.
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Xây dựng được pipeline CI/CD tự động với CodePipeline.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Nắm được cách quản lý hạ tầng bằng Infrastructure as Code (CloudFormation).
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Triển khai ứng dụng một cách tự động và nhất quán.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+* Giảm thiểu lỗi thủ công trong quá trình build và deploy.
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+* Nâng cao kỹ năng phát triển và vận hành hệ thống cloud theo chuẩn DevOps.
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Sẵn sàng áp dụng CI/CD vào các dự án thực tế.
