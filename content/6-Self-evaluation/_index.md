@@ -1,9 +1,9 @@
 ---
 title: "Self-Assessment"
 date: 2026-03-30
-weight: 6
+weight: 5
 chapter: false
-pre: " <b> 6. </b> "
+pre: " <b> 5. </b> "
 ---
 
 During my 12-week internship as a **Cloud Intern (AWS)**, I had the opportunity to explore and practice with a wide range of AWS services, from foundational topics to more advanced areas such as serverless architecture, containers, DevOps, security, monitoring, and system optimization. This journey helped me expand not only my technical knowledge but also my ability to think about cloud systems in a more structured and practical way.

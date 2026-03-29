@@ -1,9 +1,9 @@
 ---
 title: "Event 1"
 date: 2026-01-27
-weight: 1
+weight: 3
 chapter: false
-pre: " <b> 4.1. </b> "
+pre: " <b> 3.1. </b> "
 ---
 
 # Summary Report: “AWS re:Invent 2025 Recap (Vietnam)”

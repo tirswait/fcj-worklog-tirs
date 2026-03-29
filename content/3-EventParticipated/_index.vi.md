@@ -1,9 +1,9 @@
 ---
 title: "Các sự kiện đã tham gia"
 date: 2026-03-18
-weight: 4
+weight: 3
 chapter: false
-pre: " <b> 4. </b> "
+pre: " <b> 3. </b> "
 ---
 
 Phần này tổng hợp các sự kiện tôi đã tham gia trong quá trình thực tập.  

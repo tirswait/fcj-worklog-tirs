@@ -1,9 +1,9 @@
 ---
 title: "Tự đánh giá"
 date: 2026-03-30
-weight: 6
+weight: 5
 chapter: false
-pre: " <b> 6. </b> "
+pre: " <b> 5. </b> "
 ---
 
 Trong suốt 12 tuần thực tập với vai trò **Cloud Intern (AWS)**, tôi đã có cơ hội tiếp cận và thực hành với nhiều nhóm dịch vụ quan trọng trên AWS, từ nền tảng cơ bản đến các nội dung nâng cao như serverless, container, DevOps, security, monitoring và tối ưu hệ thống. Quá trình này giúp tôi không chỉ mở rộng kiến thức kỹ thuật mà còn hình thành tư duy thiết kế hệ thống cloud theo hướng thực tế và có cấu trúc hơn.

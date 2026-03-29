@@ -1,9 +1,9 @@
 ---
 title: "Events Participated"
 date: 2026-03-18
-weight: 4
+weight: 3
 chapter: false
-pre: " <b> 4. </b> "
+pre: " <b> 3. </b> "
 ---
 
 This section summarizes the events I participated in during my internship. These events provided valuable insights into modern cloud technologies, especially in the areas of Generative AI, system architecture, and real-world AWS applications.
