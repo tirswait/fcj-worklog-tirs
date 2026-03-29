@@ -1,125 +1,147 @@
 ---
-title: "Bản đề xuất"
+title: "Proposal"
 date: 2026-01-12
 weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
 
-# Website Security Baseline Assessment Platform
+# Nền tảng Bảo vệ và Phân phối Mã nguồn (IrisAuth)
 
 ## 1. Tổng quan đề xuất
 
-Website Security Baseline Assessment Platform là một hệ thống hỗ trợ đánh giá nhanh mức độ an toàn cơ bản của website dựa trên các tiêu chí bảo mật công khai và an toàn.  
-Hệ thống được thiết kế nhằm giúp doanh nghiệp hoặc đội kỹ thuật nội bộ nhận diện sớm các rủi ro bảo mật phổ biến trước khi quyết định thực hiện các hoạt động kiểm thử chuyên sâu như penetration testing.
+Nền tảng Code Protector (IrisAuth) được xây dựng nhằm cung cấp một giải pháp an toàn và có khả năng mở rộng cho việc bảo vệ và phân phối mã nguồn đến người dùng cuối mà không làm lộ mã nguồn gốc.
 
-Nền tảng tập trung vào việc cung cấp cái nhìn tổng quan về tình trạng bảo mật hiện tại của website, phục vụ cho cả mục đích kỹ thuật và quản lý.
+Hệ thống cho phép developer tải mã nguồn lên nền tảng và phân phối thông qua cơ chế loader được mã hóa. Thay vì chia sẻ trực tiếp source code, việc thực thi sẽ được kiểm soát và cung cấp một cách an toàn tại thời điểm runtime.
+
+Nền tảng tập trung vào **bảo vệ mã nguồn, kiểm soát truy cập và phân phối an toàn**, phục vụ cả nhu cầu kỹ thuật và định hướng sản phẩm.
 
 ---
 
-## 2. Vấn đề và nhu cầu
+## 2. Vấn đề và động lực
 
-### Vấn đề hiện tại
+### Thách thức hiện tại
 
-Trong thực tế, nhiều website:
+Trong môi trường phát triển phần mềm hiện nay:
 
-* Chưa được đánh giá bảo mật định kỳ
-* Thiếu công cụ sàng lọc rủi ro nhanh và hợp pháp
-* Phụ thuộc vào các hoạt động pentest tốn thời gian và chi phí
+* Mã nguồn dễ bị sao chép, chỉnh sửa hoặc tái phân phối trái phép  
+* Các phương pháp truyền thống (obfuscation, đóng gói .exe) không còn hiệu quả  
+* Developer không kiểm soát được ai đang chạy code và trong điều kiện nào  
 
-Việc thiếu một bước đánh giá nền tảng (baseline) khiến doanh nghiệp khó xác định mức độ ưu tiên cho các hoạt động bảo mật tiếp theo.
+Những hạn chế này tạo ra rủi ro lớn đối với việc bảo vệ tài sản trí tuệ và phân phối phần mềm.
 
 ### Giải pháp đề xuất
 
-Hệ thống được xây dựng để:
+Hệ thống được đề xuất nhằm:
 
-* Đánh giá các cấu hình bảo mật cơ bản từ thông tin công khai
-* Cung cấp báo cáo rủi ro ở mức độ tổng quan
-* Hỗ trợ ra quyết định mà không cần can thiệp sâu vào hệ thống mục tiêu
+* Bảo vệ mã nguồn bằng cách **không bao giờ cung cấp plaintext cho người dùng cuối**  
+* Phân phối code thông qua loader mã hóa và thực thi tại runtime  
+* Áp dụng kiểm soát truy cập bằng license, HWID và xác thực request  
 
-Giải pháp không nhằm thay thế pentest chuyên sâu, mà đóng vai trò là bước tiền kiểm tra trong quy trình bảo mật.
+Giải pháp này cung cấp một **mô hình thực thi an toàn**, thay vì chỉ dựa vào các kỹ thuật bảo vệ tĩnh.
 
 ---
 
 ## 3. Phạm vi và nguyên tắc triển khai
 
-Hệ thống được triển khai theo các nguyên tắc sau:
+Hệ thống được xây dựng dựa trên các nguyên tắc:
 
-* Chỉ thu thập và phân tích **thông tin công khai**
-* Không thực hiện tấn công, khai thác hay vượt qua cơ chế bảo vệ
-* Không brute-force, không fuzzing, không bypass authentication
+* Mã nguồn **không được phân phối trực tiếp** cho người dùng  
+* Mọi hoạt động thực thi đều thông qua **xác thực phía server**  
+* Áp dụng các cơ chế mã hóa mạnh cho lưu trữ và truyền dữ liệu  
 
-Các nội dung kiểm tra chính bao gồm:
+Các thành phần chính bao gồm:
 
-* HTTPS / SSL configuration
-* HTTP Security Headers
-* Server information exposure
-* robots.txt và sitemap
-* Nhận diện CMS phổ biến và phiên bản công khai
+* Phân phối code an toàn qua loader mã hóa  
+* Hệ thống license (HWID, expiration)  
+* Kiểm soát truy cập (IP filtering, rate limiting)  
+* Hệ thống logging và monitoring  
 
-Cách tiếp cận này đảm bảo tính **hợp pháp**, an toàn và phù hợp để sử dụng trong môi trường doanh nghiệp.
+Đảm bảo hệ thống **an toàn, có khả năng mở rộng và sẵn sàng triển khai thực tế**.
 
 ---
 
 ## 4. Thiết kế hệ thống
 
-### Thiết kế cốt lõi
+### Kiến trúc tổng thể
 
-Hệ thống được xây dựng theo hướng **portable và độc lập**:
+Nền tảng sử dụng kiến trúc **cloud-native serverless**:
 
-* Core logic (scan, đánh giá rủi ro, sinh báo cáo) hoạt động độc lập
-* Có thể triển khai trên:
-  * Local environment
-  * Server nội bộ
-  * VPS
-  * Cloud (AWS)
+* Backend chạy trên AWS Lambda  
+* Dữ liệu lưu trữ trên DynamoDB  
+* Nội dung mã nguồn lưu trên Amazon S3  
+* Frontend phân phối qua CloudFront CDN  
 
-Phần core không phụ thuộc vào hạ tầng cloud cụ thể, giúp dễ dàng mở rộng hoặc di chuyển môi trường triển khai.
+Hệ thống hướng tới:
+
+* Khả năng mở rộng cao (auto-scaling)  
+* Độ trễ thấp toàn cầu  
+* Giảm thiểu quản lý hạ tầng  
 
 ### Vai trò của AWS
 
-AWS được sử dụng như một nền tảng hỗ trợ để:
+AWS đóng vai trò hạ tầng để:
 
-* Triển khai hệ thống theo mô hình cloud-ready
-* Lưu trữ báo cáo và dữ liệu kết quả
-* Ghi log và theo dõi hoạt động hệ thống
+* Triển khai hệ thống backend serverless  
+* Lưu trữ dữ liệu và mã nguồn đã mã hóa  
+* Giám sát và theo dõi hoạt động hệ thống  
+* Phân phối nội dung toàn cầu  
 
-Trong trường hợp không sử dụng AWS, hệ thống vẫn có thể vận hành đầy đủ chức năng.
+Các dịch vụ sử dụng:
 
----
-
-## 5. Kết quả đầu ra
-
-Hệ thống cung cấp các kết quả sau:
-
-* Báo cáo đánh giá mức độ rủi ro (Low / Medium / High)
-* Phần mô tả và giải thích dễ hiểu cho người không chuyên
-* Danh sách khuyến nghị cải thiện bảo mật có thể hành động
-
-Báo cáo được thiết kế để:
-
-* Hỗ trợ đội kỹ thuật trong việc đánh giá nhanh
-* Phù hợp cho quản lý hoặc người ra quyết định tham khảo
+* AWS Lambda  
+* Amazon S3  
+* Amazon DynamoDB  
+* Amazon CloudFront  
+* Amazon CloudWatch  
+* Amazon SES  
 
 ---
 
-## 6. Giá trị kỳ vọng
+## 5. Sản phẩm đầu ra
 
-### Đối với tổ chức sử dụng
+Hệ thống cung cấp:
 
-* Có công cụ đánh giá bảo mật nội bộ
-* Giảm thời gian và chi phí sàng lọc rủi ro ban đầu
-* Là nền tảng cho các hoạt động bảo mật chuyên sâu sau này
+* Web platform quản lý và upload mã nguồn  
+* Cơ chế loader mã hóa để thực thi code an toàn  
+* Hệ thống license với HWID và thời hạn  
+* Dashboard theo dõi và logging  
+* Hạ tầng cloud serverless trên AWS  
 
-### Đối với nhóm triển khai
+Kết quả đạt được:
 
-* Thực hành đúng chuyên ngành IA / AI
-* Rèn luyện tư duy thiết kế sản phẩm thực tế
-* Làm việc với kiến trúc có khả năng mở rộng và tái sử dụng
+* Luồng thực thi code an toàn  
+* Kiểm soát truy cập và theo dõi sử dụng  
+* Dữ liệu log và monitoring hệ thống  
+
+---
+
+## 6. Giá trị mang lại
+
+### Đối với tổ chức
+
+* Bảo vệ hiệu quả tài sản trí tuệ (source code)  
+* Kiểm soát chặt chẽ việc phân phối và thực thi code  
+* Giảm rủi ro bị reverse engineering hoặc sử dụng trái phép  
+* Xây dựng nền tảng SaaS có khả năng mở rộng  
+
+### Đối với nhóm thực hiện
+
+* Kinh nghiệm thực tế với kiến trúc serverless trên AWS  
+* Áp dụng các kỹ thuật mã hóa hiện đại (ECDH, AES-GCM)  
+* Xây dựng hệ thống SaaS mang tính thực tiễn cao  
+* Nâng cao tư duy thiết kế hệ thống và sản phẩm  
 
 ---
 
 ## 7. Kết luận
 
-Đề xuất hướng tới việc xây dựng một hệ thống đánh giá bảo mật **đơn giản, đúng phạm vi và có giá trị thực tiễn**, tập trung vào hiệu quả sử dụng thay vì độ phức tạp kỹ thuật không cần thiết.  
-Việc sử dụng AWS giúp nâng cao khả năng vận hành và mở rộng, trong khi vẫn đảm bảo tính độc lập của hệ thống cốt lõi.
+Đề xuất này hướng tới xây dựng một **nền tảng bảo vệ mã nguồn an toàn và có khả năng mở rộng**, giải quyết các vấn đề thực tế trong phân phối phần mềm.
+
+Hệ thống tập trung vào:
+
+* Thiết kế ưu tiên bảo mật  
+* Kiểm soát thực thi thay vì bảo vệ tĩnh  
+* Khả năng mở rộng dựa trên cloud AWS  
+
+IrisAuth là một giải pháp **thực tiễn, hiện đại và sẵn sàng triển khai**, phù hợp với nhu cầu của developer trong môi trường phần mềm ngày nay.

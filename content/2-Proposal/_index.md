@@ -6,14 +6,15 @@ chapter: false
 pre: " <b> 2. </b> "
 ---
 
-# Website Security Baseline Assessment Platform
+# Code Protector Platform (IrisAuth)
 
 ## 1. Proposal Overview
 
-The Website Security Baseline Assessment Platform is designed to support rapid evaluation of a website’s basic security posture based on publicly accessible and non-intrusive security indicators.  
-The system aims to assist organizations and internal technical teams in identifying common security risks at an early stage, prior to deciding whether deeper security assessments such as penetration testing are necessary.
+The Code Protector Platform (IrisAuth) is designed to provide a secure and scalable solution for protecting and distributing source code to end users without exposing the original code.
 
-The platform focuses on providing a high-level view of the current security status of a website, serving both technical and managerial decision-making needs.
+The system enables developers to upload code to a centralized platform and distribute it through encrypted loaders. Instead of sharing raw source code, execution is controlled and delivered securely at runtime.
+
+This platform focuses on **code protection, access control, and secure distribution**, supporting both technical teams and product-oriented development environments.
 
 ---
 
@@ -21,43 +22,42 @@ The platform focuses on providing a high-level view of the current security stat
 
 ### Current Challenges
 
-In practice, many websites:
+In modern software development:
 
-* Are not assessed for security on a regular basis
-* Lack a fast, lawful risk screening tool
-* Rely heavily on time-consuming and costly penetration testing activities
+* Source code is easily copied, modified, or redistributed without authorization  
+* Traditional methods (obfuscation, packaging into executables) are insufficient  
+* Developers lack control over who executes their code and under what conditions  
 
-The absence of a baseline security assessment step makes it difficult for organizations to prioritize security investments and remediation efforts.
+These limitations create significant risks in intellectual property protection and software distribution.
 
 ### Proposed Solution
 
-The proposed system aims to:
+The proposed platform aims to:
 
-* Assess common security configurations using publicly available information
-* Provide an overview-level risk report
-* Support informed decision-making without deep system interaction
+* Protect source code by never exposing it in plaintext to end users  
+* Distribute code through encrypted loaders with runtime execution  
+* Enforce access control using license systems, HWID binding, and request validation  
 
-The platform is not intended to replace comprehensive penetration testing, but rather to act as a **baseline assessment** step within a broader security workflow.
+The system provides a **secure execution model**, rather than relying on static protection techniques.
 
 ---
 
 ## 3. Scope and Implementation Principles
 
-The system is developed according to the following principles:
+The system is developed based on the following principles:
 
-* Only **publicly accessible information** is collected and analyzed
-* No attacks, exploitation, or circumvention of security controls are performed
-* No brute-force, fuzzing, or authentication bypass techniques are used
+* Source code is **never directly distributed** to end users  
+* All execution is controlled via **secure server-side validation**  
+* Strong cryptographic mechanisms are applied for communication and storage  
 
-The assessment focuses on:
+The platform includes:
 
-* HTTPS / SSL configuration
-* HTTP Security Headers
-* Server information exposure
-* robots.txt and sitemap analysis
-* Detection of common CMS platforms and publicly disclosed versions
+* Secure code distribution via encrypted loaders  
+* License management with HWID locking and expiration  
+* Access control (IP filtering, rate limiting)  
+* Monitoring and logging of all execution activities  
 
-This approach ensures the system is **legally compliant** and suitable for use in enterprise environments.
+This ensures the system is **secure, scalable, and production-ready**.
 
 ---
 
@@ -65,41 +65,54 @@ This approach ensures the system is **legally compliant** and suitable for use i
 
 ### Core Architecture
 
-The platform is designed to be **portable and independent**:
+The platform follows a **serverless cloud-native architecture**:
 
-* Core logic (scanning, risk evaluation, report generation) operates independently
-* Deployment options include:
-  * Local environments
-  * On-premise servers
-  * VPS
-  * Cloud platforms (e.g., AWS)
+* Backend APIs run on AWS Lambda  
+* Data is stored in DynamoDB (NoSQL)  
+* Code content is securely stored in Amazon S3  
+* Frontend is delivered via CloudFront CDN  
 
-The core components are not tightly coupled to any specific cloud provider, enabling flexible deployment and scalability.
+The system is designed for:
+
+* High scalability (auto-scaling serverless)  
+* Low latency global access  
+* Minimal infrastructure management  
 
 ### Role of AWS
 
-AWS is used as an enabling infrastructure to:
+AWS provides the core infrastructure to:
 
-* Deploy the system in a cloud-ready architecture
-* Store assessment reports and output data
-* Log system activities and monitor operational status
+* Deploy serverless backend services  
+* Store encrypted code and metadata  
+* Monitor system behavior and performance  
+* Enable global distribution via CDN  
 
-If AWS is not used, the platform remains fully functional with no loss of core capabilities.
+Key services include:
+
+* AWS Lambda  
+* Amazon S3  
+* Amazon DynamoDB  
+* Amazon CloudFront  
+* Amazon CloudWatch  
+* Amazon SES  
 
 ---
 
 ## 5. Deliverables
 
-The platform produces the following outputs:
+The platform provides:
 
-* Security risk assessment reports categorized by severity (Low / Medium / High)
-* Clear and accessible explanations for non-technical users
-* Actionable recommendations for improving website security
+* A web-based system for secure code upload and management  
+* Encrypted loader mechanism for runtime code execution  
+* License management system with HWID binding and expiration  
+* Monitoring dashboard and logging system  
+* Cloud-based deployment with AWS serverless architecture  
 
-The reports are designed to:
+Outputs include:
 
-* Support technical teams in rapid security evaluation
-* Be understandable for management and decision-makers
+* Secure execution workflows  
+* Access control and usage tracking  
+* System logs and monitoring metrics  
 
 ---
 
@@ -107,20 +120,28 @@ The reports are designed to:
 
 ### Organizational Benefits
 
-* Availability of an internal security assessment tool
-* Reduced time and cost for initial risk screening
-* A foundation for more advanced security assessments
+* Protect intellectual property (source code) effectively  
+* Control code distribution and execution  
+* Reduce risks of unauthorized reuse or reverse engineering  
+* Provide a scalable SaaS-style solution  
 
 ### Benefits for the Project Team
 
-* Practical experience aligned with IA / AI disciplines
-* Exposure to real-world product-oriented thinking
-* Hands-on work with scalable and reusable system architectures
+* Hands-on experience with AWS serverless architecture  
+* Practical implementation of modern cryptography (ECDH, AES-GCM)  
+* Experience building a real-world SaaS security platform  
+* Exposure to system design, scalability, and product thinking  
 
 ---
 
 ## 7. Conclusion
 
-This proposal aims to deliver a **focused, well-scoped, and practically valuable** website security assessment platform.  
-The system prioritizes effectiveness and legal safety over unnecessary technical complexity.  
-AWS is utilized to enhance deployment and operational quality while preserving the independence of the core system.
+This proposal presents a **secure and scalable code protection platform** that addresses real-world challenges in software distribution.
+
+The system emphasizes:
+
+* Security-first design  
+* Controlled execution instead of static protection  
+* Cloud-native scalability using AWS  
+
+IrisAuth aims to deliver a **practical, production-ready solution** for modern developers who require strong control over their source code and distribution process.
