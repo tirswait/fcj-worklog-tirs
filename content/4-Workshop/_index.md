@@ -29,7 +29,7 @@ It also demonstrates **Role-Based Access Control (RBAC)** using AWS IAM policies
 
 #### Content
 
-1. [Introduction](4.1-Introduction/)
-2. [IAM User and Access Control](4.2-IAM/)
+1. [Introduction](4.1-Workshop-overview/)
+2. [IAM User and Access Control](4.2-Authentication%20and%20Role-Based%20Access%20Control%20using%20AWS%20IAM/)
 
 ---
