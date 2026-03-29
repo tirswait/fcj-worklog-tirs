@@ -30,14 +30,14 @@ The program provides internship allowances and offers flexibility when needed. A
 
 ---
 
-### Additional Questions
-- What was the **most valuable experience** during your internship?  
-- What aspects do you think the program **could improve** for future interns?  
-- Would you **recommend this program to others**? Why or why not?  
+### Personal Reflection
+
+During my internship, what impressed me the most was the highly practical learning environment, where I was not only exposed to theoretical knowledge but also had the opportunity to directly implement and integrate multiple AWS services. In addition, the support from mentors and the willingness of experienced team members to share their knowledge made the environment more comfortable and motivating for continuous learning.
 
 ---
 
 ### Suggestions & Expectations
-- Any suggestions to improve the internship experience  
-- Interest in continuing or engaging further with the program  
-- Other feedback (optional):
+
+It would be beneficial to have a clearer learning roadmap for each stage, allowing interns to better track their progress and understand their development direction.  
+
+Additionally, organizing regular review sessions would help identify strengths and weaknesses more effectively, enabling timely improvement throughout the internship period.

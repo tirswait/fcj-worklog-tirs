@@ -30,14 +30,12 @@ Chương trình có hỗ trợ phụ cấp và tạo điều kiện linh hoạt 
 
 ---
 
-### Một số câu hỏi mở
-- Điều bạn cảm thấy **ấn tượng nhất** trong quá trình thực tập là gì?  
-- Theo bạn, chương trình có thể **cải thiện ở điểm nào** để hỗ trợ tốt hơn cho các thực tập sinh?  
-- Bạn có sẵn sàng **giới thiệu chương trình này cho người khác** không? Vì sao?  
+### Ý kiến cá nhân
+Trong quá trình thực tập, ấn tượng nhất là môi trường học tập mang tính thực tế cao, nơi không chỉ tiếp cận lý thuyết mà còn được trực tiếp triển khai và kết nối nhiều dịch vụ AWS với nhau. Bên cạnh đó, sự hỗ trợ từ mentor và tinh thần sẵn sàng chia sẻ của các anh chị có kinh nghiệm giúp thoải mái và có động lực học hỏi nhiều hơn.
 
 ---
 
 ### Đề xuất & mong muốn
-- Những đề xuất cụ thể để nâng cao trải nghiệm thực tập  
-- Mong muốn được tiếp tục tham gia hoặc gắn bó với chương trình trong tương lai  
-- Các góp ý khác (nếu có):
+Xây dựng lộ trình học tập rõ ràng hơn theo từng giai đoạn, giúp thực tập sinh dễ theo dõi tiến độ và định hướng phát triển của bản thân.
+
+Có thêm các buổi review định kỳ cũng sẽ giúp nhận diện điểm mạnh, điểm yếu và cải thiện kịp thời.
