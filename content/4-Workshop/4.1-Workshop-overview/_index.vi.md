@@ -1,19 +1,21 @@
 ---
 title : "Giới thiệu"
 date : 2024-01-01 
-weight : 1
+weight : 1 
 chapter : false
 pre : " <b> 4.1. </b> "
 ---
 
-#### Giới thiệu về VPC Endpoint
+#### AWS Identity and Access Management (IAM)
++ **AWS Identity and Access Management (IAM)** là một dịch vụ cho phép bạn kiểm soát quyền truy cập vào các tài nguyên AWS một cách an toàn. Dịch vụ này giúp bạn tạo và quản lý người dùng, nhóm và các quyền truy cập.
++ IAM hỗ trợ **xác thực (authentication)** (ai được phép truy cập) và **phân quyền (authorization)** (được phép thực hiện những hành động gì) thông qua các chính sách (policy) như AWS managed policies hoặc custom policies.
 
-+ Điểm cuối VPC (endpoint) là thiết bị ảo. Chúng là các thành phần VPC có thể mở rộng theo chiều ngang, dự phòng và có tính sẵn sàng cao. Chúng cho phép giao tiếp giữa tài nguyên điện toán của bạn và dịch vụ AWS mà không gây ra rủi ro về tính sẵn sàng.
-+ Tài nguyên điện toán đang chạy trong VPC có thể truy cập Amazon S3 bằng cách sử dụng điểm cuối Gateway. Interface Endpoint  PrivateLink có thể được sử dụng bởi tài nguyên chạy trong VPC hoặc tại TTDL.
+#### Tổng quan workshop
+Trong workshop này, bạn sẽ làm việc với AWS IAM để mô phỏng một hệ thống xác thực và phân quyền cơ bản.  
++ Bạn sẽ tạo một **IAM user** có quyền truy cập vào AWS Management Console.  
++ Bạn sẽ gán quyền bằng cách sử dụng một AWS managed policy như **AdministratorAccess**.  
++ Bạn sẽ kiểm tra quyền của người dùng thông qua IAM dashboard để hiểu cách hệ thống kiểm soát truy cập hoạt động.  
 
-#### Tổng quan về workshop
-Trong workshop này, bạn sẽ sử dụng hai VPC.
-+ **"VPC Cloud"** dành cho các tài nguyên cloud như Gateway endpoint và EC2 instance để kiểm tra.
-+ **"VPC On-Prem"** mô phỏng môi trường truyền thống như nhà máy hoặc trung tâm dữ liệu của công ty. Một EC2 Instance chạy phần mềm StrongSwan VPN đã được triển khai trong "VPC On-prem" và được cấu hình tự động để thiết lập đường hầm VPN Site-to-Site với AWS Transit Gateway. VPN này mô phỏng kết nối từ một vị trí tại TTDL (on-prem) với AWS cloud. Để giảm thiểu chi phí, chỉ một phiên bản VPN được cung cấp để hỗ trợ workshop này. Khi lập kế hoạch kết nối VPN cho production workloads của bạn, AWS khuyên bạn nên sử dụng nhiều thiết bị VPN để có tính sẵn sàng cao.
+Workshop này minh họa cách **kiểm soát truy cập dựa trên vai trò (RBAC)** có thể được áp dụng bằng AWS IAM. Đây là phiên bản đơn giản hóa của hệ thống xác thực và phân quyền được mô tả trong nền tảng GuardScript đã đề xuất.
 
-![overview](/images/5-Workshop/5.1-Workshop-overview/diagram1.png)
+![overview](/images/4-Workshop/4.1-Workshop-overview/1.png)
