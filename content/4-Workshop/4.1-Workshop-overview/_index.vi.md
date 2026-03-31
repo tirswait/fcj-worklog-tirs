@@ -16,6 +16,4 @@ Trong workshop này, bạn sẽ làm việc với AWS IAM để mô phỏng mộ
 + Bạn sẽ gán quyền bằng cách sử dụng một AWS managed policy như **AdministratorAccess**.  
 + Bạn sẽ kiểm tra quyền của người dùng thông qua IAM dashboard để hiểu cách hệ thống kiểm soát truy cập hoạt động.  
 
-Workshop này minh họa cách **kiểm soát truy cập dựa trên vai trò (RBAC)** có thể được áp dụng bằng AWS IAM. Đây là phiên bản đơn giản hóa của hệ thống xác thực và phân quyền được mô tả trong nền tảng GuardScript đã đề xuất.
-
 ![overview](/images/4-Workshop/4.1-Workshop-overview/1.png)

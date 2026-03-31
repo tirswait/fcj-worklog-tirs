@@ -16,6 +16,4 @@ In this workshop, you will work with AWS IAM to simulate a basic authentication 
 + You will assign permissions using an AWS managed policy such as **AdministratorAccess**.  
 + You will verify user permissions through the IAM dashboard to understand how access control is implemented.  
 
-This workshop demonstrates how **role-based access control (RBAC)** can be applied using AWS IAM. It is a simplified version of the authentication and permission system described in the proposed GuardScript platform.
-
 ![overview](/images/4-Workshop/4.1-Workshop-overview/1.png)
