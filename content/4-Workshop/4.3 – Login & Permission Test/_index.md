@@ -6,18 +6,36 @@ chapter : false
 pre : " <b> 4.3. </b> "
 ---
 
-# Login and Permission Testing
+## Step 1: Login with IAM User
 
-In this section, we test IAM user access.
+- Open the **Sign-in URL**
+- Log in using user **dev-2**
 
-Steps:
-1. Enable console access for dev-2
-2. Generate password and login URL
-3. Log in using IAM user
-4. Access Amazon S3
+![login](/images/4-Workshop/4.3-User-and-Test/1.png)
 
-Observation:
-- User can view S3 buckets
-- User cannot modify resources
+---
 
-This confirms that read-only permissions are working correctly.
+## Step 2: Access Amazon S3
+
+- After logging in, navigate to **Amazon S3**
+- The user can:
+  - View bucket list
+  - Open buckets
+
+![s3](/images/4-Workshop/4.3-User-and-Test/2.png)
+
+---
+
+## Step 3: Test Restricted Actions (Access Denied)
+
+Do:
+
+- Try uploading a file to S3
+
+Result:
+
+- The system returns **Access Denied**
+
+![deny](/images/4-Workshop/4.3-User-and-Test/3.png)
+
+---
