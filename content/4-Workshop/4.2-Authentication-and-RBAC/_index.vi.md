@@ -21,4 +21,3 @@ Kết quả:
 Mô hình:
 User → Group → Policy
 
-![diagram](/images/4.1-Workshop-overview/1.png)

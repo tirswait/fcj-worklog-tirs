@@ -22,4 +22,4 @@ Result:
 This demonstrates RBAC:
 - Users → Groups → Policies
 
-![diagram](/images/4.1-Workshop-overview/1.png)
+
