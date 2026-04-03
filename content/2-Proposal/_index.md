@@ -1,389 +1,312 @@
 ---
-title: "Project Proposal"
-date: 2026-01-12
+title: "Proposal"
+date: 2026-03-26
 weight: 2
 chapter: false
 pre: " <b> 2. </b> "
----
+--------------------
 
 # GuardScript — Code Protector Platform
 
 ## Project Proposal
 
-### Student / Team Information
+**Team Members:**
 
-- **Võ Tấn Phát (Team Leader)** – Student ID: **SE194484**
-- **Bùi Minh Hiển** – Student ID: **SE190829**
-- **Dương Nguyên Bình** – Student ID: **SE194067**
-- **Vinh Trần** – Student ID: **SE193927**
-- **Nguyễn Duy Tùng** – Student ID: **SE196572**
-- **Nguyễn Đức Trí** – Student ID: **SE194091**
+| Full Name         | Student ID | Role        |
+| ----------------- | ---------- | ----------- |
+| Võ Tấn Phát       | SE194484   | Team Leader |
+| Bùi Minh Hiển     | SE190829   | Member      |
+| Dương Nguyên Bình | SE194067   | Member      |
+| Trần Vinh         | SE193927   | Member      |
+| Nguyễn Duy Tùng   | SE196572   | Member      |
+| Nguyễn Đức Trí    | SE194091   | Member      |
 
----
-
-## Multi-language Secure Source Code Protection and Script Distribution Platform
-
-### Deployed on AWS Cloud Infrastructure
-
-**AWS Lambda** · **Amazon S3** · **Amazon DynamoDB** · **Amazon CloudFront** · **Amazon CloudWatch** · **Amazon SES**
+**AWS Services:** `Lambda` · `DynamoDB` · `S3` · `CloudFront` · `CloudWatch` · `API Gateway WebSocket` · `SES` · `SNS` · `WAF` · `ACM`
 
 ---
 
-# I. PROJECT INTRODUCTION
+### 1. Executive Summary
 
-## 1.1. Background and Problem
+**GuardScript** is a script distribution platform with loader-based access control. Instead of distributing source code directly, the system serves script content through controlled endpoints with signature checks, timestamp/nonce validation, license enforcement, HWID binding, and workspace access policies.
 
-In the modern software development environment, **source code protection** is a critical challenge. When developers distribute **Python** or **JavaScript** scripts to end users, they face risks such as source code being copied, modified, or redistributed illegally without effective control mechanisms.
-
-Existing solutions such as simple **obfuscation** or packaging into `.exe` files still have many limitations: they are vulnerable to **reverse engineering**, cannot control who is running the code, and cannot revoke access when necessary. The market lacks an integrated solution that both protects source code and manages distribution and access in a comprehensive way.
-
-## 1.2. Proposed Solution
-
-**Code Protector** (system name: **IrisAuth**) is a **SaaS platform** that allows developers to upload source code to a server and distribute it to users through an **encrypted loader mechanism**. Instead of sharing source code directly, end users only receive a small loader of 1–2 lines. The server returns encrypted code only when the user passes all security checks, and the code exists only in **RAM** during execution — never written to a file.
-
-The system is deployed on **AWS Cloud**, leveraging a **serverless architecture** and **managed services** to ensure high scalability, low global latency, and operation without manual infrastructure management.
+The solution uses a serverless AWS architecture to reduce operational overhead, support scale, and satisfy cloud workshop objectives.
 
 ---
 
-# II. PROJECT OBJECTIVES
+### 2. Problem Statement
 
-## 2.1. General Objective
+#### Current Problems
 
-Build a complete web platform that provides **secure source code protection and distribution services** for **Python** and **JavaScript**, with a multi-layer authentication system, an intuitive administration interface, and globally scalable **AWS Cloud** infrastructure.
+The team identified three key issues in script delivery workflows:
 
-## 2.2. Specific Objectives
+1. Source code can be easily leaked or copied when shared manually
+2. Lack of fine-grained access control for users or teams
+3. Difficulty in tracking versions, access, and usage history
+4. Absence of centralized management leading to fragmented data
+5. Limited auditing, monitoring, and protection mechanisms
+6. Deployment and security systems are often complex and costly
+ 
+#### Solution
 
-- Design and implement a code distribution system via **encrypted loaders**, ensuring that source code is never exposed to end users in plaintext form.
-- Build a **ECDH X25519 key exchange** mechanism combined with **AES-256-GCM encryption** to secure data transmission.
-- Develop a **license management system** with features such as **HWID Lock**, expiration date, and execution limits.
-- Build a **workspace** and **team collaboration** system with multiple user roles.
-- Develop a responsive web admin interface distributed via **Amazon CloudFront** with low global latency.
-- Integrate monitoring and alerting via **Amazon CloudWatch**, centralized logging, and notifications via **Discord Webhook**.
-- Deploy a **serverless architecture** on **AWS Lambda**, store objects on **Amazon S3**, and structured data on **Amazon DynamoDB**.
-- Integrate **Amazon SES** to send workspace member invitations and automated system notifications.
+The proposed system addresses these issues through:
 
----
+1. Loader-based script retrieval instead of direct source distribution.
+2. Dual transfer protocols: v2 (XOR + response verification) and v3 (X25519 ECDH + AES-GCM).
+3. License/HWID controls with access list policies.
+4. Cloud-native observability using CloudWatch and application logs.
 
-# III. PROJECT SCOPE
+#### Benefits and ROI
 
-## 3.1. In Scope
-
-### Backend & API
-
-- **RESTful API** and **WebSocket** using **Node.js / Express.js** running on **AWS Lambda** via **API Gateway** or **Lambda Function URL**
-- Handle **ECDH Handshake**, **AES-256-GCM encryption**, and **XOR protocol** for loader distribution
-- **Rate limiting**, **IP access control**, **request signature validation**
-
-### Frontend
-
-- 5 interface pages: **Landing**, **Login**, **Register**, **Dashboard**, **Workspace**
-- Static assets distributed globally via **Amazon CloudFront CDN**
-- **Vanilla HTML5/CSS3/JavaScript**, no dependency on heavy frameworks
-- Real-time synchronization via **AWS API Gateway WebSocket API**
-
-### AWS Infrastructure
-
-- **Amazon S3**: store encrypted source code, replacing local filesystem storage
-- **Amazon DynamoDB**: **NoSQL database** replacing **SQLite**, storing users, workspaces, projects, licenses, logs, rate limits, and configurations
-- **AWS Lambda**: runtime for **Express.js API**, supporting **serverless auto-scaling**
-- **Amazon CloudFront**: distribute static files, cache S3 assets, SSL termination, custom domain
-- **Amazon CloudWatch**: monitoring, log aggregation, metric alarms, system dashboards
-- **Amazon SES**: send workspace invitation emails via token
-
-### Loader & Client
-
-- **Python loader** using `urllib` for **Python 3.7+**
-- **Node.js loader**
-- **Browser Userscript** using **Tampermonkey**
-- Two distribution mechanisms: **ECDH handshake v3** and **XOR execute v2**
-
-### Business Features
-
-- **License system**: single creation, bulk creation, **HWID binding**, **CSV export**
-- **IP Blacklist**, **IP Whitelist**, **Rate Limiting**, **Workspace PIN**
-- Team management: invite members via email token with 3 roles `owner`, `editor`, `viewer`
-- Multi-file project management with **bundle generation** for **Python** and **Node.js**
-- **Python AST Obfuscator** as an independent module
-- Real-time synchronization via **WebSocket**, notifications via **Discord Webhook**
-
-## 3.2. Out of Scope
-
-- **Native mobile applications**
-- Support for programming languages other than **Python** and **JavaScript**
-- Integration of **payment gateway**
-- **CI/CD automation** beyond basic deployment using **AWS SAM** or **AWS CDK**
+1. Stronger control over script usage and distribution.
+2. Better protection against API abuse via signed requests and rate limits.
+3. Cost-efficient operation for student/demo workloads with pay-per-use services.
 
 ---
 
-# IV. SYSTEM ARCHITECTURE & TECHNOLOGY
+### 3. Solution Architecture
 
-## 4.1. Technology Stack
+The architecture follows a serverless model with edge delivery for frontend and Lambda-based API processing.
 
-| Layer | Service / Technology | Details |
-|------|----------------------|----------|
-| Runtime API | **Node.js v18+** on **AWS Lambda** | ES Module, Express.js |
-| Database | **Amazon DynamoDB** | NoSQL key-value, on-demand capacity, automatic TTL for `rate_limits` and `sessions` |
-| Object Storage | **Amazon S3** | Store encrypted scripts compressed with gzip, versioning enabled, server-side encryption |
-| CDN & Edge | **Amazon CloudFront** | Distribute static frontend, cache S3 assets, SSL termination, custom domain |
-| Compute | **AWS Lambda** | Auto-scale, serverless, reduced operational cost |
-| Email | **Amazon SES** | Send workspace invitation emails, configured with DKIM and SPF |
-| Monitoring | **Amazon CloudWatch** | Log Groups, metric alarms, dashboard |
-| Real-time | **API Gateway WebSocket API** | Broadcast updates per workspace |
-| Frontend | **HTML5, CSS3, Vanilla JS** | 5 static pages deployed to S3 bucket |
-| Compression | **Pako (Gzip)** | Compress code before storing in S3 |
+**Typical request flow:**
 
-## 4.2. AWS System Architecture Overview
+```
+Client (browser / loader)
+  → CloudFront Distribution (SSL termination, cache layer)
+    → Static assets: S3 bucket (frontend)
+    → API /api/*, /files/*: Lambda Function URL origin
+      → DynamoDB (users, workspaces, projects, licenses, logs, rate_limits, ...)
+      → S3 (script/content objects)
+  → API Gateway WebSocket (real-time updates)
+  → CloudWatch Logs / Alarms / Dashboard
+```
+![GuardScript System Architecture](/images/2-Proposal/architecture.jpg)
 
-The **IrisAuth** system is deployed using a **serverless architecture** on **AWS**, completely eliminating the need for managing physical servers. A typical request flow is as follows:
+#### AWS Services Used
 
-- Client (**browser** or **Python loader**) sends requests to **CloudFront Distribution**
-- Static assets such as HTML, CSS, JavaScript are served directly from **Amazon S3** via **CloudFront**
-- API requests at path ` /api/* ` are forwarded to **API Gateway**, then to **AWS Lambda**
-- **Lambda functions** process business logic, read/write metadata in **Amazon DynamoDB** and script content in **Amazon S3**
-- Email invitations are sent via **Amazon SES**
-- All Lambda logs are streamed to **Amazon CloudWatch Logs**
-- Real-time connections go through **API Gateway WebSocket API**
-- 
-![diagram](/images/2-Proposal/1.jpg)
+| Layer          | Service                   | Details                                                                       |
+| -------------- | ------------------------- | ----------------------------------------------------------------------------- |
+| Runtime API    | AWS Lambda (Node.js 20.x) | Modular monolith backend handlers |
+| Database       | Amazon DynamoDB           | Multi-table model, PAY_PER_REQUEST, TTL for temporary records |
+| Object Storage | Amazon S3                 | Frontend hosting and content objects |
+| CDN & Edge     | Amazon CloudFront         | Static delivery and route behaviors for `/api/*`, `/files/*` |
+| Edge Security  | AWS WAF                   | Protects against malicious web requests at CloudFront edge |
+| TLS/SSL        | AWS Certificate Manager   | Manages SSL/TLS certificates for HTTPS |
+| Notification   | Amazon SNS / SES          | Sends alerts and email notifications (invitations, alarms) |
+| Monitoring     | Amazon CloudWatch         | Alarms for errors/throttles/p95 duration + operational dashboard |
+| Real-time      | API Gateway WebSocket API | Workspace/user/admin event broadcasting |
+| Delivery       | GitHub Actions + SAM      | Automated infrastructure and frontend deployment |
 
-## 4.3. Authentication System
+#### Component Design
 
-The system does not use external **JWT** libraries but implements a custom authentication mechanism.
-
-- Tokens are signed using **HMAC-SHA256**, with a randomly generated 48-byte secret stored in **DynamoDB** in the `app_config` table
-- Token has a **TTL of 7 days**
-- When a user changes their password, all existing tokens are immediately invalidated by comparing with `password_changed_at`
-- Tokens are sent via **HttpOnly Cookie** named `token`, and also supported via `Authorization` header
-- Passwords are hashed using **PBKDF2-SHA256** with **210,000 iterations** and a 16-byte random salt
-- Legacy accounts using plain **SHA-256** are upgraded upon login
-- **Workspace PIN** also uses **PBKDF2** and generates a separate session token stored in the `pin_verifications` table
-
-## 4.4. Two Code Distribution Protocols
-
-### Protocol v2 — `GET /api/v5/execute`
-
-- Client sends parameters including `id`, license key, HWID, timestamp, nonce, and **HMAC-SHA256 signature**
-- Server validates the signature and checks timestamp within ±5 minutes to prevent **replay attacks**
-- Response is encrypted using **XOR** with a key derived from **SHA-256**
-- Script content is retrieved from **Amazon S3**
-
-### Protocol v3 — `POST /api/v5/handshake`
-
-- Client generates an **X25519 key pair**, sends the public key to the server along with a verification signature
-- **AWS Lambda** generates its own key pair and computes the shared secret using `diffieHellman()`
-- The **AES key** is derived using **HKDF-SHA256**
-- Script is encrypted using **AES-256-GCM**, returning ciphertext along with the server public key
-- Each session has a unique session key, supporting **perfect forward secrecy**
-
-## 4.5. Security Algorithms and Standards
-
-| Algorithm | Application in System |
-|-----------|----------------------|
-| **PBKDF2-SHA256** | Hash user passwords and Workspace PIN |
-| **HMAC-SHA256** | Sign auth tokens, loader requests, and responses |
-| **ECDH X25519** | Key exchange for protocol v3 |
-| **HKDF-SHA256** | Derive AES key from shared secret |
-| **AES-256-GCM** | Encrypt stored and transmitted scripts |
-| **XOR + SHA-256** | Encryption for protocol v2 |
-| **Gzip** | Compress content before storing in **Amazon S3** |
-| `crypto.timingSafeEqual` | Secure comparison of tokens and signatures |
-| Nonce + Timestamp | Prevent replay attacks |
-| **S3 Server-Side Encryption** | Encrypt data at rest in S3 |
-| **TLS 1.2+** | Secure all client-server connections |
-
-## 4.6. Database — Amazon DynamoDB
-
-Replacing **SQLite** with **Amazon DynamoDB**, a fully managed **NoSQL database**. The data design can follow either **single-table** or **multi-table** models depending on access patterns.
-
-| DynamoDB Table | Partition Key / Sort Key | Function |
-|--------------|---------------------------|-----------|
-| `users` | PK: `userId` | Manage user accounts |
-| `workspaces` | PK: `workspaceId` | Manage workspace, loader key, language, encryption keys |
-| `projects` | PK: `workspaceId`, SK: `projectId` | Manage projects and security settings |
-| `project_files` | PK: `projectId`, SK: `fileId` | Manage files and folders in project |
-| `licenses` | PK: `workspaceId`, SK: `licenseKey` | Manage license keys, HWID, expiration |
-| `access_lists` | PK: `workspaceId`, SK: `ip#type` | Manage blacklist and whitelist |
-| `workspace_members` | PK: `workspaceId`, SK: `userId` | Manage members and roles |
-| `workspace_invitations` | PK: `token` | Store email invitation tokens |
-| `pin_verifications` | PK: `sessionToken` | Manage sessions after PIN verification |
-| `logs` | PK: `workspaceId`, SK: `timestamp#uuid` | System activity logs |
-| `app_config` | PK: `configKey` | System configuration |
-| `rate_limits` | PK: `rateLimitKey` | Request rate limiting data |
-
-**TTL** is enabled for tables `workspace_invitations`, `pin_verifications`, and `rate_limits` to automatically delete expired data.
-
-## 4.7. Amazon S3 — Object Storage for Script Content
-
-- Completely replaces local filesystem storage
-- Each script file is stored with key format `{workspaceId}/{uuid}_{timestamp}_{hash}.gz`
-- Content is compressed using **Gzip** and encrypted with **AES-256-GCM** before storage
-- S3 bucket enables **versioning**, **server-side encryption**, and **Block Public Access**
-- **AWS Lambda** accesses S3 via **IAM Role** following the **least privilege principle**
-- Static frontend assets are also stored in a separate **S3 bucket** and distributed via **CloudFront**
-
-## 4.8. Amazon CloudFront — CDN & Edge
-
-- Uses a single **CloudFront Distribution** to serve both static frontend and API proxy
-- Behavior configuration:
-  - ` /api/* ` → routes to **API Gateway**
-  - ` /* ` → routes to **S3 static bucket**
-- Enforces **HTTPS**, using **TLS 1.2** or higher
-- Optimizes caching for static assets while limiting cache for API responses
-- Supports custom domain with certificates from **AWS Certificate Manager**
-- Can integrate **AWS WAF** to block bots, SQL injection, and XSS at the edge layer
-
-## 4.9. Amazon CloudWatch — Monitoring & Observability
-
-- Create **Log Groups** for each **Lambda function**
-- Create **Metric Filters** to extract metrics such as execution count, handshake rate, error rate
-- Configure **CloudWatch Alarms** when:
-  - Lambda error rate exceeds threshold
-  - p99 latency exceeds acceptable level
-  - **DynamoDB** experiences throttle events
-- Build **CloudWatch Dashboard** to monitor request volume, latency, error breakdown, and storage usage
-- Use **structured JSON logging** for easier querying via **CloudWatch Logs Insights**
-
-## 4.10. Amazon SES — Email Service
-
-- Send workspace invitation emails containing tokens
-- Can use **SES Templates** or inline HTML
-- Configure **DKIM**, **SPF**, **DMARC** to improve deliverability
-- Monitor **bounce rate** and **complaint rate** via integration with **CloudWatch**
-- Move from **sandbox mode** to **production** after verifying sending domain
-
-## 4.11. Role-Based Access Control
-
-| Role | Project Management | License Management | View Logs | Workspace Settings | Invite Members |
-|--------|------------------|------------------|---------|-------------------|----------------|
-| `owner` | Full access | Full access | Full access | Full access | Full access |
-| `admin` | Full access | Full access | Full access | Limited | Allowed |
-| `editor` | CRUD | Create/View | View | Not allowed | Not allowed |
-| `viewer` | Read-only | View only | View | Not allowed | Not allowed |
+1. **Client Layer**: web dashboard and loader clients (Python/Node/Lua).
+2. **Edge Layer**: CloudFront routing and caching.
+3. **Compute Layer**: Lambda handlers for auth, workspace, project, license, and loader protocols.
+4. **Data Layer**: DynamoDB + S3.
+5. **Observability Layer**: CloudWatch metrics/alarms/dashboard and application logs.
 
 ---
 
-# V. DETAILED FEATURES
+### 4. Technical Implementation
 
-## 5.1. Core Workflow
+#### 4.1. Authentication System
 
-- Developer logs in and creates a workspace, metadata is stored in **Amazon DynamoDB**
-- Developer uploads or inputs source code, the code is compressed using **Gzip**, encrypted using **AES-256-GCM**, then stored in **Amazon S3**
-- Developer receives a short loader snippet for **Python** or **JavaScript**
-- End-user runs the loader, which generates **HWID** from device information and hashes it using **SHA-256**
-- Loader calls `GET /api/v5/execute` or `POST /api/v5/handshake` via **CloudFront**
-- **AWS Lambda** verifies signature, checks license, HWID, rate limits, and access list in **DynamoDB**
-- If valid, Lambda retrieves the script from **S3**, decrypts it, and returns content according to the corresponding protocol
-- Loader decrypts and executes directly in **RAM**, without writing to a file
-- The system logs activity into the `logs` table, updates execution count, and broadcasts events via **WebSocket**
-- **CloudWatch** collects logs and metrics in real time
+Token format: `v2.<payload_base64url>.<signature_base64url>`
 
-## 5.2. License System
+1. Tokens are signed with HMAC-SHA256 using a secret stored in app config.
+2. Password hashing uses PBKDF2-SHA256 (210000 iterations).
+3. Signature verification uses timing-safe comparison.
+4. Workspace PIN verification uses TTL-based session tokens.
 
-- Create single **license key** with format **[prefix]LIC-XXXXXXXX-XXXXXXXX[suffix]**, supporting custom keys
-- Bulk creation up to **100 licenses per batch** using **DynamoDB batch write**
-- **HWID Lock**: when end-user runs for the first time, HWID is stored in **DynamoDB**; subsequent runs with different HWID are rejected
-- Enable or disable `hwid_lock` per license
-- Set expiration via `expiration_date`, checked in real time on each execution
-- Bind license to a specific project or entire workspace
-- Support HWID reset when users change devices
-- Export list to **CSV** including `key`, `note`, status, `HWID`, `OS`, usage count, and last used time
+#### 4.2. Two Code Distribution Protocols
 
-## 5.3. Access Control
+**Protocol v2 — GET /api/v5/execute (XOR)**
 
-- **IP Blacklist**: block specific IPs from accessing the workspace
-- **IP Whitelist**: allow access only from specified IPs
-- **CloudFront WAF**: adds an additional edge protection layer
-- **Max executions**: limit total number of project executions
-- **Rate limiting** using **sliding window model** on **DynamoDB**
-  - Login: max 10 requests/min/IP
-  - Register: max 5 requests/min/IP
-  - Loader execute: max 120 requests/min/IP
-  - ECDH handshake: max 60 requests/min/IP
-  - License creation: max 30 requests/min
-- **TTL** on `rate_limits` automatically clears expired data
-- **Workspace PIN** is hashed using **PBKDF2**
-- All loader requests must include a valid **HMAC-SHA256 signature**
+1. Client sends `id`, `license`, `HWID`, `timestamp`, `nonce`, `signature`.
+2. Server validates signature, timestamp window (±300s), and rate limits.
+3. Response is XOR-encrypted and signed.
 
-## 5.4. Multi-file Project Management
+**Protocol v3 — POST /api/v5/handshake (ECDH + AES-GCM)**
 
-- Organized using directory structure with `file` and `folder`
-- Define **entry point** for multi-file projects
-- **Bundle generation**:
-  - **Python**: merge files, handle internal imports
-  - **Node.js**: bundle modules according to project structure
-- Supports recognition of over 30 file extensions
-- Operations: create, rename, move, copy, delete, upload, search
-- Large content is stored in **S3** and retrieved when needed
+1. Client sends an X25519 public key to handshake endpoint.
+2. Server derives shared secret and AES key.
+3. Script is encrypted using AES-GCM and returned with response signature.
 
-## 5.5. Workspace & Team Collaboration
+#### 4.3. Security Algorithms and Standards
 
-- Each user can own multiple independent workspaces
-- Each workspace has its own `loader_key` as a public identifier
-- Invite members via email token using **Amazon SES**
-- Invitation tokens are stored in `workspace_invitations`
-- Supports 4 roles: `owner`, `admin`, `editor`, `viewer`
-- Workspace changes are broadcast in real time via **API Gateway WebSocket API**
-- Can configure **Discord Webhook** to send important event notifications
-- Dashboard displays statistics such as total executions, licenses, and members
+| Algorithm                          | Usage                                                 |
+| ---------------------------------- | ----------------------------------------------------- |
+| PBKDF2-SHA256 (210,000 iterations) | Password hashing, Workspace PIN hashing               |
+| HMAC-SHA256                        | Token signing, request signing, response signing      |
+| ECDH X25519                        | Key exchange in Protocol v3                           |
+| HKDF-SHA256                        | AES key derivation from ECDH shared secret (RFC 5869) |
+| AES-256-GCM                        | Script encryption (S3 + transmission in Protocol v3)  |
+| XOR + SHA-256                      | Transmission encryption (Protocol v2)                 |
+| crypto.timingSafeEqual           | Secure comparison to prevent timing attacks           |
+| Nonce + Timestamp ±5 minutes       | Replay attack protection                              |
+| S3 SSE-S3 (AES256)                 | Default object encryption in current template         |
 
-## 5.6. Logging & Monitoring
+#### 4.4. Database — Amazon DynamoDB
 
-- Log events such as:
-  - `LOAD_SCRIPT`
-  - `ECDH_HANDSHAKE`
-  - `BLOCK_ACCESS`
-  - `INVALID_LICENSE`
-  - `INVALID_HWID`
-  - `INVALID_SIGNATURE`
-  - `CREATE_LICENSE`
-  - `BATCH_CREATE_LICENSE`
-- Each log includes `workspace_id`, `action`, details, IP, country, and timestamp
-- Business logs are stored in **DynamoDB**
-- System logs from Lambda are stored in **CloudWatch Logs**
-- Configure **CloudWatch Alarms** for early warnings
-- Build **CloudWatch Dashboard** to monitor KPIs
-- Support viewing logs per workspace in the admin interface
+| Table                   | Partition Key         | GSI(s)                                                        | Notes                                                  |
+| ----------------------- | --------------------- | ------------------------------------------------------------- | ------------------------------------------------------ |
+| users                 | id                  | EmailIndex(email)                                           | User accounts, roles, password_changed_at            |
+| workspaces            | id                  | OwnerIndex(user_id), LoaderKeyIndex(loader_key)           | Workspace config, loader_key, PIN hash                 |
+| projects              | id                  | WorkspaceIndex(workspace_id), SecretKeyIndex(secret_key)  | Project settings, execution count                      |
+| project_files         | id                  | ProjectIndex(project_id), ParentIndex(parent_id)          | Project file structure, entry point, ordering          |
+| licenses              | id                  | WorkspaceIndex(workspace_id), KeyIndex(key), ProjectIndex(project_id) | License info, HWID, expiration, usage count |
+| access_lists          | id                  | WorkspaceIndex(workspace_id)                               | IP blacklist/whitelist                                 |
+| workspace_members     | id                  | WorkspaceIndex(workspace_id), UserIndex(user_id)          | Workspace members and roles                            |
+| workspace_invitations | id                  | WorkspaceIndex, TokenIndex, EmailIndex — **TTL enabled**   | Team invitation tokens                                 |
+| pin_verifications     | token               | WorkspaceIndex(workspace_id) — **TTL enabled**             | PIN verification sessions                              |
+| logs                 | id                  | WorkspaceIndex(workspace_id), WorkspaceTimestampIndex(workspace_id + timestamp) | Event logs with timestamp-range query support |
+| app_config            | key                 | —                                                             | System configs (HMAC secret, loader secret…)           |
+| rate_limits           | key                 | — **TTL enabled**                                             | Sliding window rate limiting                           |
+| websocket_connections | connection_id       | UserIndex(user_id), WorkspaceIndex(workspace_id) — **TTL enabled** | Active WebSocket connections                   |
+| admin_audit           | id                  | ActorIndex(actor_user_id), TargetIndex(target_id)         | Admin action audit log                                 |
 
-## 5.7. Python AST Obfuscator
+> **Design Note**: TTL is enabled on `workspace_invitations`, `pin_verifications`, `rate_limits`, and `websocket_connections` to automatically delete expired/disconnected records without cron jobs. `WorkspaceTimestampIndex` on `logs` supports time-range analytics queries.
 
-File `obfuscator.py` is a Python code obfuscation tool operating independently at the **AST layer**.
+#### 4.5. Development Phases
 
-- Parses syntax and checks for compatibility issues
-- Renames variables, functions, and parameters into random strings
-- Adds **dead code** to obfuscate logic
-- Outputs compatibility reports with severity levels `error` or `warning`
+The project follows **Agile Scrum** methodology with 6 sprints (1 week each):
 
----
+**Sprint 1 — Analysis & Architecture Design**
+- Define system requirements
+- Design AWS architecture
+- Design database schema and APIs
 
-# VI. IMPLEMENTATION PLAN
+**Sprint 2 — Backend Foundation**
+- Set up Lambda project structure
+- Implement Auth, User, Workspace APIs
+- Integrate DynamoDB
 
-| Phase | Content | Estimated Time |
-|----------|----------|-------------------|
-| 1. Analysis & Design | Define requirements, design **DynamoDB schema**, API, and **CloudFront behavior** | Week 1–2 |
-| 2. AWS Infrastructure | Provision **Lambda**, **DynamoDB**, **S3**, **CloudFront**, **SES**, **CloudWatch** using **AWS SAM** or **AWS CDK** | Week 3 |
-| 3. Backend Core | Build authentication, workspace, project, file management APIs | Week 4–6 |
-| 4. Security & Loader | Implement **ECDH handshake**, **AES encryption**, **Python** and **JavaScript loaders** | Week 7–8 |
-| 5. License & Access | Complete license system, HWID, rate limiting, blacklist, whitelist | Week 9 |
-| 6. Frontend & Email | Complete UI, integrate WebSocket and **Amazon SES** | Week 10–11 |
-| 7. Obfuscator | Complete **Python AST Obfuscator** and bundle generation | Week 12 |
-| 8. Testing & Deploy | Unit test, integration test, load test, production deployment | Week 13–14 |
+**Sprint 3 — Script & File Management**
+- CRUD for project, file, and content resources
+- S3 integration for upload/download
+- File tree structure and bundling
+
+**Sprint 4 — Security & Access Control**
+- Implement access control and licensing
+- Integrate script protection loader (Protocol v2/v3)
+- Build audit logging
+
+**Sprint 5 — Frontend & Realtime**
+- Develop dashboard UI
+- Integrate APIs
+- Configure WebSocket for real-time updates
+
+**Sprint 6 — CI/CD & Deployment**
+- Configure GitHub Actions pipeline
+- Deploy via AWS SAM/CloudFormation
+- Set up CloudWatch monitoring and alarms
 
 ---
 
-# VII. EXPECTED RESULTS
+### 5. Roadmap & Milestones
 
-After completion, the project will provide:
-
-- A complete web platform running on **AWS Cloud** with **serverless architecture**
-- A source code protection system with two protocols: **XOR execute v2** and **ECDH/AES-GCM v3**
-- An intuitive admin interface distributed via **Amazon CloudFront**
-- Loader clients compatible with **Python 3.7+**, **Node.js v14+**, and **Tampermonkey**
-- Automated email invitation system via **Amazon SES**
-- A full monitoring and alerting platform using **Amazon CloudWatch**
-- Technical documentation including architecture, API specification, and deployment guide using **AWS SAM** or **AWS CDK**
+| Phase                                   | Content                                                                                      | Timeline    |
+| --------------------------------------- | -------------------------------------------------------------------------------------------- | ----------- |
+| 1. Analysis & Architecture Design       | AWS onboarding, GuardScript scope definition, architecture design, DynamoDB schema, API planning | Week 1–6 |
+| 2. Backend Foundation                   | Project kickoff, auth, workspace, project, file, and license APIs                           | Week 7–8    |
+| 3. Script, File & AWS Migration         | Encryption module, S3 integration, Lambda/DynamoDB/CloudFront setup, loader protocols       | Week 8–9    |
+| 4. Security & Access Control            | Loader v2/v3 hardening, HWID lock, access-list policies, rate-limit validation               | Week 9–11   |
+| 5. Frontend & Realtime                  | Dashboard/workspace UI, WebSocket integration, responsive design, overall testing            | Week 7–10   |
+| 6. CI/CD & Documentation                | SAM/CloudFormation deployment, CloudWatch monitoring, validation checklist, final reporting  | Week 11–12  |
 
 ---
 
-# VIII. TECHNOLOGIES USED
+### 6. Cost Estimation
 
-**Node.js**, **Express.js**, **AWS Lambda**, **Amazon DynamoDB**, **Amazon S3**, **Amazon CloudFront**, **Amazon CloudWatch**, **Amazon SES**, **AWS API Gateway**, **AWS WAF**, **AWS KMS**, **AWS IAM**, **ECDH X25519**, **AES-256-GCM**, **HMAC-SHA256**, **HKDF-SHA256**, **PBKDF2-SHA256**, **Python urllib**, **Python AST Manipulation**, **Gzip Compression**, **CORS**, **Rate Limiting**, **Role-Based Access Control**, **Discord Webhook**.
+Typical monthly infrastructure cost (Free Tier / Small Scale): **~$4.32/month**
+
+| Service               | Estimated Cost     | Notes                                      |
+| --------------------- | ------------------ | ------------------------------------------ |
+| AWS Lambda            | ~$0.00/month       | Free tier: 1M requests/month               |
+| Amazon DynamoDB       | ~$0.60/month       | On-demand; 25 GB free storage              |
+| Amazon S3             | ~$0.80/month       | Frontend hosting + content storage         |
+| Amazon CloudFront     | ~$0.77/month       | 1 TB free transfer (first year)            |
+| Amazon CloudWatch     | ~$0.50/month       | 30-day log retention, alarms, dashboard    |
+| API Gateway WebSocket | ~$0.35/month       | WebSocket connections                      |
+| Amazon SES            | ~$0.09/month       | Email notifications and invitations        |
+| Amazon SNS            | ~$0.00/month       | Alert notifications (mostly free tier)     |
+| AWS WAF               | ~$0.21/month       | Edge protection rules                      |
+| AWS ACM               | ~$0.00/month       | SSL/TLS certificates (free for CloudFront) |
+| AWS IAM               | ~$0.00/month       | No direct cost                             |
+| **Total**             | **~$4.32/month**   | Usage-based, serverless pay-per-use        |
+
+> Lambda and DynamoDB are mostly covered by the free tier at low usage levels.
+
+---
+
+### 7. Risk Assessment
+
+| Risk                      | Impact | Probability | Mitigation                             |
+| ------------------------- | ------ | ----------- | -------------------------------------- |
+| Lambda cold start latency | Medium | Medium      | Optimize handlers and monitor p95      |
+| DynamoDB throttling       | High   | Low         | On-demand scaling, CloudWatch alerts   |
+| S3 PUT/GET failures       | High   | Low         | Retry logic, versioning enabled        |
+| Budget overrun            | Medium | Low         | AWS Budgets alerts, optimize TTL/cache |
+| Replay attacks            | High   | Low         | Timestamp + nonce + HMAC required      |
+
+**Contingency Plan:**
+
+* If primary endpoint behavior fails → fallback to Lambda Function URL.
+* If S3 is unavailable → retry with exponential backoff, log to CloudWatch.
+* Use SAM/CloudFormation stacks for quick infrastructure recovery.
+
+---
+
+### 8. Security Considerations
+
+1. Signed request/response validation with HMAC-SHA256.
+2. Timestamp + nonce verification for replay resistance.
+3. IP/scope rate limiting with TTL-based cleanup.
+4. Role-based access control at workspace level.
+5. HWID lock enforcement for licensed scripts.
+6. IAM role permissions scoped to stack resources.
+
+---
+
+### 9. Monitoring / Logging / Validation
+
+1. CloudWatch alarms are configured for `Errors`, `Throttles`, and `p95 Duration`.
+2. A CloudWatch dashboard is provisioned for runtime visibility.
+3. Application-level logs are stored by workspace for auditability.
+4. Validation checklist includes auth, protocol, access-list, and alarm tests.
+
+---
+
+### 10. Deployment / Implementation Plan
+
+1. Deploy infrastructure via AWS SAM (`sam build`, `sam deploy`).
+2. Sync frontend artifacts to S3 hosting bucket.
+3. Invalidate CloudFront after frontend updates.
+4. Optionally use GitHub Actions pipeline for automated deployment.
+5. Validate output endpoints (CloudFront, Lambda URL, WebSocket, table names).
+
+---
+
+### 11. Expected Outcomes
+
+**Technical Outcomes:**
+
+* End-to-end AWS serverless deployment with validated API and loader flow.
+* Dual loader protocol support with security controls (signature, HWID, rate-limit).
+* Baseline observability for runtime health and performance.
+* Reproducible deployment process aligned with workshop requirements.
+
+**Long-term Value:**
+
+* Extendable architecture for additional loaders and governance features.
+* Reusable cloud-native reference for future FCJ workshop projects.
+
+---
+
+
+### 12. Future Improvements
+
+1. Add production-ready SES email workflow for invitations.
+2. Add AWS WAF managed rules for edge protection.
+3. Upgrade S3 encryption controls from SSE-S3 to SSE-KMS CMK where needed.
+4. Add AWS Budgets and Cost Anomaly Detection.
+5. Increase automated test coverage (unit/integration/security checks).
