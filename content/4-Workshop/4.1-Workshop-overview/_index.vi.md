@@ -17,4 +17,4 @@ Bạn sẽ học:
 
 Workshop mô phỏng hệ thống phân quyền thực tế theo mô hình RBAC.
 
-![diagram](/images/4.1-Workshop-overview/1.jpg)
+![diagram](/images/4-Workshop/4.1-Workshop-overview/1.jpg)
