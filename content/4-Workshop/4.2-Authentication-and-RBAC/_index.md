@@ -11,10 +11,9 @@ pre : " <b> 4.2. </b> "
 In this section, we implement RBAC using AWS IAM.
 
 Steps:
-1. Create IAM users (dev-1, dev-2)
-2. Create user group (Developers)
-3. Attach AmazonS3ReadOnlyAccess policy
-4. Add users to the group
+1. Create user group (Developers) & Attach AmazonS3ReadOnlyAccess policy
+2. Create IAM users (dev-1, dev-2) & Add users to the group
+ 
 
 Result:
 - Users inherit permissions from the group
@@ -22,3 +21,5 @@ Result:
 
 This demonstrates RBAC:
 - Users → Groups → Policies
+
+![diagram](/images/4.1-Workshop-overview/1.png)

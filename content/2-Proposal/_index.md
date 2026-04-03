@@ -143,6 +143,8 @@ The **IrisAuth** system is deployed using a **serverless architecture** on **AWS
 - Email invitations are sent via **Amazon SES**
 - All Lambda logs are streamed to **Amazon CloudWatch Logs**
 - Real-time connections go through **API Gateway WebSocket API**
+- 
+![diagram](/images/2-Proposal/1.jpg)
 
 ## 4.3. Authentication System
 

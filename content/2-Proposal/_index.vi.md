@@ -144,6 +144,8 @@ Hệ thống **IrisAuth** được triển khai theo mô hình **serverless** tr
 - Toàn bộ log của Lambda được stream vào **Amazon CloudWatch Logs**
 - Kết nối thời gian thực đi qua **API Gateway WebSocket API**
 
+![diagram](/images/2-Proposal/1.jpg)
+
 ## 4.3. Hệ thống xác thực
 
 Hệ thống không sử dụng thư viện **JWT** bên ngoài mà tự xây dựng cơ chế xác thực riêng.

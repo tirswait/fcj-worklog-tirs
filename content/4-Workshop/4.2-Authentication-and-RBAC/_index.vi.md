@@ -11,10 +11,8 @@ pre : " <b> 4.2. </b> "
 Trong phần này, bạn triển khai RBAC bằng AWS IAM.
 
 Các bước:
-1. Tạo IAM user (dev-1, dev-2)
-2. Tạo group (Developers)
-3. Gán policy AmazonS3ReadOnlyAccess
-4. Thêm user vào group
+1. Tạo group (Developers) & Gán policy AmazonS3ReadOnlyAccess
+2. Tạo IAM user (dev-1, dev-2) & Thêm user vào group 
 
 Kết quả:
 - User kế thừa quyền từ group
@@ -22,3 +20,5 @@ Kết quả:
 
 Mô hình:
 User → Group → Policy
+
+![diagram](/images/4.1-Workshop-overview/1.png)
