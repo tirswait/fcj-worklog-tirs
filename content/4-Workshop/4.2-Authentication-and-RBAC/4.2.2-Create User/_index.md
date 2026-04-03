@@ -1,5 +1,5 @@
 ---
-title : "Create User and Test Permissions with AWS IAM"
+title : "Create User and Add to Group"
 date : 2026-03-30
 weight : 2
 chapter : false

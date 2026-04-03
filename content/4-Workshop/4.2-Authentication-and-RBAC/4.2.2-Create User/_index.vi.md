@@ -1,5 +1,5 @@
 ---
-title : "Tạo User và kiểm tra quyền với AWS IAM"
+title : "Tạo User và thêm vào Group"
 date : 2026-03-30
 weight : 2
 chapter : false
