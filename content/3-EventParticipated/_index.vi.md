@@ -33,7 +33,7 @@ Thông qua việc tham gia các sự kiện, tôi không chỉ nâng cao kiến 
 
 ---
 
-### [Event 2](3-EventParticipated/3.1-Event2/)  
+### [Event 2](3-EventParticipated/3.2-Event2/)  
 &emsp;**Tên sự kiện:** AI Agents, Prompt Engineering, and AIoT Projects on AWS  
 
 &emsp;**Thời gian:** 14/03/2026  

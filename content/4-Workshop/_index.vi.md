@@ -29,8 +29,9 @@ Ngoài ra, workshop cũng minh họa cơ chế **phân quyền theo vai trò (RB
 
 #### Nội dung
 
-1. [Giới thiệu](4.1-Workshop-overview/)
-2. [Quản lý IAM và phân quyền](4.2-Authentication%20and%20Role-Based%20Access%20Control%20using%20AWS%20IAM/)
-
+1. [Workshop-overview](4.1-Workshop-overview/)
+2. [Authentication-and-RBAC](4.2-Authentication-and-RBAC/)
+3. [Workshop-overview](4.3-Login-and-Permission-Test/)
+4. [Access-Denied-and-RBAC-Validation](4.4-Access-Denied-and-RBAC-Validation/)
 ---
 

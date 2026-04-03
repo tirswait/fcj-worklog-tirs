@@ -32,7 +32,7 @@ Each event contributed not only to my technical knowledge but also helped me gai
 
 ---
 
-### [Event 1](3-EventParticipated/3.1-Event2/)  
+### [Event 2](3-EventParticipated/3.2-Event2/)  
 &emsp;**Event Name:** AI Agents, Prompt Engineering, and AIoT Projects on AWS  
 
 &emsp;**Date & Time:** March 14, 2026  
