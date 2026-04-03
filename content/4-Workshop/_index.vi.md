@@ -33,3 +33,4 @@ Ngoài ra, workshop cũng minh họa cơ chế **phân quyền theo vai trò (RB
 2. [Quản lý IAM và phân quyền](4.2-Authentication%20and%20Role-Based%20Access%20Control%20using%20AWS%20IAM/)
 
 ---
+

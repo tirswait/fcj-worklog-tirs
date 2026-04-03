@@ -1,0 +1,24 @@
+---
+title : "Xác thực và RBAC"
+date : 2026-03-30 
+weight : 2 
+chapter : false
+pre : " <b> 4.2. </b> "
+---
+
+# Xác thực và Phân quyền theo vai trò
+
+Trong phần này, bạn triển khai RBAC bằng AWS IAM.
+
+Các bước:
+1. Tạo IAM user (dev-1, dev-2)
+2. Tạo group (Developers)
+3. Gán policy AmazonS3ReadOnlyAccess
+4. Thêm user vào group
+
+Kết quả:
+- User kế thừa quyền từ group
+- Quản lý quyền tập trung
+
+Mô hình:
+User → Group → Policy

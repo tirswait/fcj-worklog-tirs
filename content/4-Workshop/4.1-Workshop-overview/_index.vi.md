@@ -1,19 +1,18 @@
 ---
 title : "Giới thiệu"
-date : 2024-01-01 
+date : 2026-03-30
 weight : 1 
 chapter : false
 pre : " <b> 4.1. </b> "
 ---
 
-#### AWS Identity and Access Management (IAM)
-+ **AWS Identity and Access Management (IAM)** là một dịch vụ cho phép bạn kiểm soát quyền truy cập vào các tài nguyên AWS một cách an toàn. Dịch vụ này giúp bạn tạo và quản lý người dùng, nhóm và các quyền truy cập.
-+ IAM hỗ trợ **xác thực (authentication)** (ai được phép truy cập) và **phân quyền (authorization)** (được phép thực hiện những hành động gì) thông qua các chính sách (policy) như AWS managed policies hoặc custom policies.
+# Tổng quan Workshop
 
-#### Tổng quan workshop
-Trong workshop này, bạn sẽ làm việc với AWS IAM để mô phỏng một hệ thống xác thực và phân quyền cơ bản.  
-+ Bạn sẽ tạo một **IAM user** có quyền truy cập vào AWS Management Console.  
-+ Bạn sẽ gán quyền bằng cách sử dụng một AWS managed policy như **AdministratorAccess**.  
-+ Bạn sẽ kiểm tra quyền của người dùng thông qua IAM dashboard để hiểu cách hệ thống kiểm soát truy cập hoạt động.  
+Workshop này giúp bạn hiểu cách sử dụng AWS IAM để kiểm soát truy cập tài nguyên.
 
-![overview](/images/4-Workshop/4.1-Workshop-overview/1.png)
+Bạn sẽ học:
+- Tạo IAM user
+- Gán quyền bằng group và policy
+- Kiểm tra quyền trên dịch vụ AWS
+
+Workshop mô phỏng hệ thống phân quyền thực tế theo mô hình RBAC.
