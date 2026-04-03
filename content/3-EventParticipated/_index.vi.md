@@ -13,7 +13,7 @@ Thông qua việc tham gia các sự kiện, tôi không chỉ nâng cao kiến 
 
 ---
 
-### [Event 1](4.1-Event1/)  
+### [Event 1](3.1-Event1/)  
 &emsp;**Tên sự kiện:** AWS re:Invent 2025 Recap  
 
 &emsp;**Thời gian:** 27/01/2026  
@@ -33,7 +33,7 @@ Thông qua việc tham gia các sự kiện, tôi không chỉ nâng cao kiến 
 
 ---
 
-### [Event 2](4.2-Event2/)  
+### [Event 2](3.2-Event2/)  
 &emsp;**Tên sự kiện:** AI Agents, Prompt Engineering, and AIoT Projects on AWS  
 
 &emsp;**Thời gian:** 14/03/2026  

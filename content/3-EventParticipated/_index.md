@@ -12,7 +12,7 @@ Each event contributed not only to my technical knowledge but also helped me gai
 
 ---
 
-### [Event 1](4.1-Event1/)  
+### [Event 1](3.1-Event1/)  
 &emsp;**Event Name:** AWS re:Invent 2025 Recap  
 
 &emsp;**Date & Time:** January 27, 2026  
@@ -32,7 +32,7 @@ Each event contributed not only to my technical knowledge but also helped me gai
 
 ---
 
-### [Event 2](4.2-Event2/)  
+### [Event 2](3.2-Event2/)  
 &emsp;**Event Name:** AI Agents, Prompt Engineering, and AIoT Projects on AWS  
 
 &emsp;**Date & Time:** March 14, 2026  
