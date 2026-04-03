@@ -79,7 +79,7 @@ Client (browser / loader)
   → API Gateway WebSocket (real-time updates)
   → CloudWatch Logs / Alarms / Dashboard
 ```
-![GuardScript System Architecture](/images/2-Proposal/architecture.jpg)
+![GuardScript System Architecture](/images/2-Proposal/1.jpg)
 
 #### AWS Services Used
 
