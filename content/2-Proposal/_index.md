@@ -21,8 +21,6 @@ pre: " <b> 2. </b> "
 | Nguyễn Duy Tùng   | SE196572   | Member      |
 | Nguyễn Đức Trí    | SE194091   | Member      |
 
-**AWS Services:** `Lambda` · `DynamoDB` · `S3` · `CloudFront` · `CloudWatch` · `API Gateway WebSocket` · `SES` · `SNS` · `WAF` · `ACM`
-
 ---
 
 ### 1. Executive Summary
