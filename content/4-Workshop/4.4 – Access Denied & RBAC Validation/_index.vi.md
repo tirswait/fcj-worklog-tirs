@@ -206,15 +206,3 @@ Sau khi hoàn thành workshop, chúng ta có thể rút ra các kết luận sau
 * Policy quyết định rõ user được làm gì và không được làm gì
 * AWS IAM áp dụng đúng nguyên tắc **Least Privilege**
 * Mô hình **RBAC** giúp việc quản lý truy cập trở nên rõ ràng, dễ mở rộng và an toàn hơn
-
-Tóm lại, hệ thống đã được triển khai thành công theo mô hình:
-
-```text
-User → Group → Policy → Resource
-```
-
-Và hành vi thực tế của user đã xác nhận rằng hệ thống phân quyền hoạt động chính xác trong AWS IAM.
-
-````
-
----

@@ -207,10 +207,3 @@ After completing this workshop, we can conclude that:
 * AWS IAM correctly applies the **Least Privilege** principle
 * The **RBAC** model makes access control more scalable, organized, and secure
 
-In summary, the system was successfully implemented using this model:
-
-```text
-User → Group → Policy → Resource
-```
-
-The actual behavior of the IAM user confirms that the access control system works correctly in AWS IAM.
