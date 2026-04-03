@@ -6,8 +6,6 @@ chapter : false
 pre : " <b> 4.4. </b> "
 ---
 
-# RBAC and Access Control Validation
-
 In this section, we summarize the entire workshop and explain how the access control system works in AWS IAM using the **Role-Based Access Control (RBAC)** model.
 
 ## Objectives

@@ -6,8 +6,6 @@ chapter : false
 pre : " <b> 4.4. </b> "
 ---
 
-# RBAC và kiểm chứng hệ thống phân quyền
-
 Trong phần này, chúng ta sẽ tổng hợp toàn bộ các bước đã thực hiện trong workshop và phân tích cách hệ thống phân quyền hoạt động trong AWS IAM theo mô hình **Role-Based Access Control (RBAC)**.
 
 ## Mục tiêu
