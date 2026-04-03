@@ -17,4 +17,4 @@ You will learn:
 
 This workshop simulates a real-world access control system using RBAC.
 
-![diagram](/images/4.1-Workshop-overview/1.png)
+![diagram](/images/4.1-Workshop-overview/1.jpg)
