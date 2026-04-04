@@ -75,7 +75,7 @@ Client (browser / loader)
   → API Gateway WebSocket (real-time)
   → CloudWatch Logs / Alarms / Dashboard
 ```
-![Kiến trúc hệ thống GuardScript](/images/2-Proposal/1.jpg)
+![Kiến trúc hệ thống GuardScript](/images/2-Proposal/architecture.jpg)
 
 #### Dịch vụ AWS sử dụng
 
@@ -100,69 +100,60 @@ Client (browser / loader)
 4. **Data Layer**: DynamoDB + S3.
 5. **Observability Layer**: CloudWatch logs/alarms/dashboard và bảng logs nghiệp vụ.
 
+#### Giám sát & Quan sát hệ thống
+
+1. CloudWatch alarms được cấu hình cho `Errors`, `Throttles` và `p95 Duration`.
+2. CloudWatch dashboard được tạo để theo dõi runtime.
+3. Log nghiệp vụ được lưu theo từng workspace để kiểm toán.
+4. Checklist validation bao gồm các test: auth, protocol, access-list và alarm.
+
 ---
 
 ### 4. Triển khai kỹ thuật
 
-#### 4.1. Hệ thống xác thực
+#### 4.1. Yêu cầu kỹ thuật
 
-Token được tự implement theo cấu trúc `v2.<payload_base64url>.<signature_base64url>`:
+**Yêu cầu chức năng:**
+1. Đăng ký, đăng nhập và xác thực người dùng theo session.
+2. Tạo và quản lý workspace với phân quyền theo vai trò (owner, admin, member).
+3. Quản lý project: CRUD cho project, file và nội dung script đã bundle.
+4. Phân phối script qua loader endpoint có kiểm soát (Protocol v2 và v3).
+5. Quản lý license key với HWID binding, thời hạn và theo dõi sử dụng.
+6. Quản lý IP access control theo workspace (blacklist và whitelist).
+7. Mời và quản lý thành viên workspace qua invitation.
+8. Ghi nhật ký kiểm toán cho các thao tác quan trọng của người dùng và admin.
+9. Phát sự kiện thời gian thực qua WebSocket API.
+10. Bảng điều khiển admin để giám sát và quản lý nền tảng.
 
-1. Token ký bằng HMAC-SHA256 với secret lưu trong bảng app config.
-2. Password hash dùng PBKDF2-SHA256 (210000 iterations).
-3. So sánh chữ ký bằng timing-safe compare.
-4. PIN workspace có session token riêng với TTL.
+**Yêu cầu phi chức năng:**
 
-#### 4.2. Hai protocol phân phối code
-
-**Protocol v2 — GET /api/v5/execute (XOR)**
-
-1. Client gửi `id`, `license`, `HWID`, `timestamp`, `nonce`, `signature`.
-2. Server kiểm tra timestamp ±300s, signature và rate-limit.
-3. Script trả về được mã hóa XOR và có response signature.
-
-**Protocol v3 — POST /api/v5/handshake (ECDH + AES-GCM)**
-
-1. Client tạo public key X25519 và gửi lên endpoint handshake.
-2. Server tạo keypair phiên, derive shared secret, derive AES key, mã hóa nội dung bằng AES-GCM.
-3. Response gồm server public key, encrypted payload, timestamp và chữ ký.
-
-#### 4.3. Thuật toán và chuẩn bảo mật
-
-| Thuật toán | Ứng dụng cụ thể |
+| Hạng mục | Yêu cầu |
 |---|---|
-| PBKDF2-SHA256 (210.000 iter) | Băm mật khẩu người dùng, băm Workspace PIN |
-| HMAC-SHA256 | Ký auth token và ký request/response loader |
-| ECDH X25519 | Trao đổi khóa Protocol v3 (handshake) |
-| HKDF-SHA256 | Dẫn xuất AES key từ ECDH shared secret (RFC 5869) |
-| AES-256-GCM | Mã hóa script lưu S3 + mã hóa truyền tải Protocol v3 |
-| XOR + SHA-256 | Mã hóa truyền tải Protocol v2 |
-| crypto.timingSafeEqual | So sánh token/signature — chống timing attack |
-| Nonce + Timestamp ±5 phút | Chống replay attack trên mọi request loader |
-| S3 SSE-S3 (AES256) | Mã hóa object mặc định theo template hạ tầng |
+| Bảo mật | Request ký HMAC, trao đổi khóa ECDH, chống replay bằng nonce + timestamp |
+| Hiệu năng | p95 response API < 500ms; CloudWatch alarm cảnh báo khi vượt ngưỡng latency |
+| Khả năng mở rộng | Serverless Lambda + DynamoDB on-demand tự động scale theo tải |
+| Tính sẵn sàng | Phân phối qua CloudFront edge; S3 lưu trữ độ bền cao (99.999999999%) |
+| Khả năng bảo trì | Modular Lambda monolith; SAM/CloudFormation IaC để tái tạo hạ tầng |
+| Quan sát hệ thống | CloudWatch metrics, alarms, dashboard; log nghiệp vụ theo từng workspace |
 
-#### 4.4. Cơ sở dữ liệu — Amazon DynamoDB
+**Công nghệ sử dụng:**
 
-| Bảng DynamoDB | Partition Key | GSI | Ghi chú |
-|---|---|---|---|
-| users | id | EmailIndex(email) | Tài khoản người dùng, role, password_changed_at |
-| workspaces | id | OwnerIndex(user_id), LoaderKeyIndex(loader_key) | Workspace, loader_key, PIN hash |
-| projects | id | WorkspaceIndex(workspace_id), SecretKeyIndex(secret_key) | Project (script), cài đặt bảo mật, execution count |
-| project_files | id | ProjectIndex(project_id), ParentIndex(parent_id) | File/folder trong project, entry point, sort_order |
-| licenses | id | WorkspaceIndex(workspace_id), KeyIndex(key), ProjectIndex(project_id) | License key, HWID, ngày hết hạn, usage count |
-| access_lists | id | WorkspaceIndex(workspace_id) | IP blacklist / whitelist theo workspace |
-| workspace_members | id | WorkspaceIndex(workspace_id), UserIndex(user_id) | Thành viên được mời, vai trò |
-| workspace_invitations | id | WorkspaceIndex, TokenIndex, EmailIndex — **TTL tự động** | Token mời thành viên |
-| pin_verifications | token | WorkspaceIndex(workspace_id) — **TTL tự động** | Session token sau xác thực PIN |
-| logs | id | WorkspaceIndex(workspace_id), WorkspaceTimestampIndex(workspace_id + timestamp) | Nhật ký sự kiện, hỗ trợ truy vấn theo khoảng thời gian |
-| app_config | key | — | Cấu hình hệ thống (HMAC secret, loader secret…) |
-| rate_limits | key | — **TTL tự động** | Sliding window rate limiting |
-| websocket_connections | connection_id | UserIndex(user_id), WorkspaceIndex(workspace_id) — **TTL tự động** | Các kết nối WebSocket đang hoạt động |
-| admin_audit | id | ActorIndex(actor_user_id), TargetIndex(target_id) | Nhật ký hành động admin |
+| Thành phần | Công nghệ |
+|---|---|
+| Runtime | Node.js 20.x trên AWS Lambda |
+| Cơ sở dữ liệu | Amazon DynamoDB (PAY_PER_REQUEST) |
+| Lưu trữ | Amazon S3 |
+| Edge / CDN | Amazon CloudFront + AWS WAF |
+| Thời gian thực | API Gateway WebSocket API |
+| Xác thực | Hệ thống token HMAC-SHA256 tự xây dựng |
+| Mã hóa | AES-256-GCM, ECDH X25519, PBKDF2-SHA256 |
+| IaC | AWS SAM / CloudFormation |
+| CI/CD | GitHub Actions |
+| Monitoring | Amazon CloudWatch (Logs, Alarms, Dashboard) |
 
-> **Lưu ý thiết kế**: TTL được bật trên `workspace_invitations`, `pin_verifications`, `rate_limits`, và `websocket_connections` để tự động xóa records hết hạn/đã ngắt kết nối mà không cần cronjob. `WorkspaceTimestampIndex` trên bảng `logs` hỗ trợ truy vấn phân tích theo khoảng thời gian.
+---
 
-#### 4.5. Các giai đoạn phát triển
+#### 4.2. Các giai đoạn triển khai
 
 Dự án áp dụng phương pháp **Agile Scrum** với 6 sprint (mỗi sprint 1 tuần):
 
@@ -251,42 +242,7 @@ Chi phí hạ tầng hàng tháng điển hình (Free Tier / Quy mô nhỏ): **~
 
 ---
 
-### 8. Security Considerations
-
-1. Chữ ký request/response bằng HMAC-SHA256.
-2. Xác minh timestamp và nonce để giảm replay.
-3. Rate-limit theo IP/scope có TTL tự dọn dẹp.
-4. RBAC theo owner/admin/editor/viewer.
-5. HWID lock cho license khi cấu hình bật.
-6. IAM role giới hạn theo tài nguyên stack.
-
----
-
-### 9. Monitoring / Logging / Validation
-
-1. CloudWatch alarms đang có sẵn cho `Errors`, `Throttles`, `Duration p95`.
-2. CloudWatch dashboard đang có widget theo dõi invocations/errors/throttles/duration.
-3. Bảng logs trên DynamoDB ghi nhận hành động theo workspace.
-4. Checklist validation đề xuất:
-  - Test login/register/rate-limit.
-  - Test execute v2 với chữ ký/timestamp sai.
-  - Test handshake v3 với public key sai.
-  - Test blacklist/whitelist theo IP.
-  - Kiểm tra metrics và alarms sau khi mô phỏng lỗi.
-
----
-
-### 10. Deployment / Implementation Plan
-
-1. Build và deploy stack bằng AWS SAM (`sam build`, `sam deploy`).
-2. Sync frontend lên S3 host bucket.
-3. Invalidate CloudFront sau khi cập nhật frontend.
-4. Có thể dùng pipeline GitHub Actions để tự động hóa deploy.
-5. Kiểm tra outputs sau deploy: CloudFront domain, Lambda URL, WebSocket endpoint, DynamoDB table names.
-
----
-
-### 11. Kết quả kỳ vọng
+### 8. Kết quả kỳ vọng
 
 **Kết quả kỹ thuật:**
 1. Nền tảng deploy được end-to-end trên AWS serverless.
@@ -299,7 +255,7 @@ Chi phí hạ tầng hàng tháng điển hình (Free Tier / Quy mô nhỏ): **~
 
 ---
 
-### 12. Hướng phát triển
+### 9. Hướng phát triển
 
 1. Tích hợp đầy đủ luồng gửi email production qua SES.
 2. Bổ sung WAF rules cho edge protection.

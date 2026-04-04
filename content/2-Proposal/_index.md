@@ -77,7 +77,7 @@ Client (browser / loader)
   → API Gateway WebSocket (real-time updates)
   → CloudWatch Logs / Alarms / Dashboard
 ```
-![GuardScript System Architecture](/images/2-Proposal/1.jpg)
+![GuardScript System Architecture](/images/2-Proposal/architecture.jpg)
 
 #### AWS Services Used
 
@@ -102,69 +102,60 @@ Client (browser / loader)
 4. **Data Layer**: DynamoDB + S3.
 5. **Observability Layer**: CloudWatch metrics/alarms/dashboard and application logs.
 
+#### Monitoring & Observability
+
+1. CloudWatch alarms are configured for `Errors`, `Throttles`, and `p95 Duration`.
+2. A CloudWatch dashboard is provisioned for runtime visibility.
+3. Application-level logs are stored by workspace for auditability.
+4. Validation checklist includes auth, protocol, access-list, and alarm tests.
+
 ---
 
 ### 4. Technical Implementation
 
-#### 4.1. Authentication System
+#### 4.1. Technical Requirements
 
-Token format: `v2.<payload_base64url>.<signature_base64url>`
+**Functional Requirements:**
+1. User registration, login, and session-based authentication.
+2. Workspace creation and management with role-based access control (owner, admin, member).
+3. Script project management: CRUD for projects, files, and bundled content.
+4. Script distribution via controlled loader endpoints (Protocol v2 and v3).
+5. License key management with HWID binding, expiration, and usage tracking.
+6. IP access control per workspace (blacklist and whitelist policies).
+7. Team collaboration via workspace invitations and membership management.
+8. Audit logging for all critical user and admin actions.
+9. Real-time event broadcasting via WebSocket API.
+10. Admin console for platform-level oversight and user management.
 
-1. Tokens are signed with HMAC-SHA256 using a secret stored in app config.
-2. Password hashing uses PBKDF2-SHA256 (210000 iterations).
-3. Signature verification uses timing-safe comparison.
-4. Workspace PIN verification uses TTL-based session tokens.
+**Non-Functional Requirements:**
 
-#### 4.2. Two Code Distribution Protocols
+| Category        | Requirement                                                                          |
+| --------------- | ------------------------------------------------------------------------------------ |
+| Security        | HMAC-signed requests, ECDH key exchange, replay protection via nonce + timestamp     |
+| Performance     | p95 API response < 500ms; CloudWatch alarms for latency breaches                     |
+| Scalability     | Serverless Lambda + DynamoDB on-demand auto-scales with load                         |
+| Availability    | CloudFront edge delivery; S3 high-durability object storage (99.999999999%)          |
+| Maintainability | Modular Lambda monolith; SAM/CloudFormation IaC for reproducible infrastructure      |
+| Observability   | CloudWatch metrics, alarms, and dashboard; structured per-workspace application logs |
 
-**Protocol v2 — GET /api/v5/execute (XOR)**
+**Technical Stack:**
 
-1. Client sends `id`, `license`, `HWID`, `timestamp`, `nonce`, `signature`.
-2. Server validates signature, timestamp window (±300s), and rate limits.
-3. Response is XOR-encrypted and signed.
+| Component  | Technology                                  |
+| ---------- | ------------------------------------------- |
+| Runtime    | Node.js 20.x on AWS Lambda                  |
+| Database   | Amazon DynamoDB (PAY_PER_REQUEST)           |
+| Storage    | Amazon S3                                   |
+| Edge / CDN | Amazon CloudFront + AWS WAF                 |
+| Real-time  | API Gateway WebSocket API                   |
+| Auth       | Custom HMAC-SHA256 token system             |
+| Encryption | AES-256-GCM, ECDH X25519, PBKDF2-SHA256     |
+| IaC        | AWS SAM / CloudFormation                    |
+| CI/CD      | GitHub Actions                              |
+| Monitoring | Amazon CloudWatch (Logs, Alarms, Dashboard) |
 
-**Protocol v3 — POST /api/v5/handshake (ECDH + AES-GCM)**
+---
 
-1. Client sends an X25519 public key to handshake endpoint.
-2. Server derives shared secret and AES key.
-3. Script is encrypted using AES-GCM and returned with response signature.
-
-#### 4.3. Security Algorithms and Standards
-
-| Algorithm                          | Usage                                                 |
-| ---------------------------------- | ----------------------------------------------------- |
-| PBKDF2-SHA256 (210,000 iterations) | Password hashing, Workspace PIN hashing               |
-| HMAC-SHA256                        | Token signing, request signing, response signing      |
-| ECDH X25519                        | Key exchange in Protocol v3                           |
-| HKDF-SHA256                        | AES key derivation from ECDH shared secret (RFC 5869) |
-| AES-256-GCM                        | Script encryption (S3 + transmission in Protocol v3)  |
-| XOR + SHA-256                      | Transmission encryption (Protocol v2)                 |
-| crypto.timingSafeEqual           | Secure comparison to prevent timing attacks           |
-| Nonce + Timestamp ±5 minutes       | Replay attack protection                              |
-| S3 SSE-S3 (AES256)                 | Default object encryption in current template         |
-
-#### 4.4. Database — Amazon DynamoDB
-
-| Table                   | Partition Key         | GSI(s)                                                        | Notes                                                  |
-| ----------------------- | --------------------- | ------------------------------------------------------------- | ------------------------------------------------------ |
-| users                 | id                  | EmailIndex(email)                                           | User accounts, roles, password_changed_at            |
-| workspaces            | id                  | OwnerIndex(user_id), LoaderKeyIndex(loader_key)           | Workspace config, loader_key, PIN hash                 |
-| projects              | id                  | WorkspaceIndex(workspace_id), SecretKeyIndex(secret_key)  | Project settings, execution count                      |
-| project_files         | id                  | ProjectIndex(project_id), ParentIndex(parent_id)          | Project file structure, entry point, ordering          |
-| licenses              | id                  | WorkspaceIndex(workspace_id), KeyIndex(key), ProjectIndex(project_id) | License info, HWID, expiration, usage count |
-| access_lists          | id                  | WorkspaceIndex(workspace_id)                               | IP blacklist/whitelist                                 |
-| workspace_members     | id                  | WorkspaceIndex(workspace_id), UserIndex(user_id)          | Workspace members and roles                            |
-| workspace_invitations | id                  | WorkspaceIndex, TokenIndex, EmailIndex — **TTL enabled**   | Team invitation tokens                                 |
-| pin_verifications     | token               | WorkspaceIndex(workspace_id) — **TTL enabled**             | PIN verification sessions                              |
-| logs                 | id                  | WorkspaceIndex(workspace_id), WorkspaceTimestampIndex(workspace_id + timestamp) | Event logs with timestamp-range query support |
-| app_config            | key                 | —                                                             | System configs (HMAC secret, loader secret…)           |
-| rate_limits           | key                 | — **TTL enabled**                                             | Sliding window rate limiting                           |
-| websocket_connections | connection_id       | UserIndex(user_id), WorkspaceIndex(workspace_id) — **TTL enabled** | Active WebSocket connections                   |
-| admin_audit           | id                  | ActorIndex(actor_user_id), TargetIndex(target_id)         | Admin action audit log                                 |
-
-> **Design Note**: TTL is enabled on `workspace_invitations`, `pin_verifications`, `rate_limits`, and `websocket_connections` to automatically delete expired/disconnected records without cron jobs. `WorkspaceTimestampIndex` on `logs` supports time-range analytics queries.
-
-#### 4.5. Development Phases
+#### 4.2. Implementation Phases
 
 The project follows **Agile Scrum** methodology with 6 sprints (1 week each):
 
@@ -254,37 +245,7 @@ Typical monthly infrastructure cost (Free Tier / Small Scale): **~$4.32/month**
 
 ---
 
-### 8. Security Considerations
-
-1. Signed request/response validation with HMAC-SHA256.
-2. Timestamp + nonce verification for replay resistance.
-3. IP/scope rate limiting with TTL-based cleanup.
-4. Role-based access control at workspace level.
-5. HWID lock enforcement for licensed scripts.
-6. IAM role permissions scoped to stack resources.
-
----
-
-### 9. Monitoring / Logging / Validation
-
-1. CloudWatch alarms are configured for `Errors`, `Throttles`, and `p95 Duration`.
-2. A CloudWatch dashboard is provisioned for runtime visibility.
-3. Application-level logs are stored by workspace for auditability.
-4. Validation checklist includes auth, protocol, access-list, and alarm tests.
-
----
-
-### 10. Deployment / Implementation Plan
-
-1. Deploy infrastructure via AWS SAM (`sam build`, `sam deploy`).
-2. Sync frontend artifacts to S3 hosting bucket.
-3. Invalidate CloudFront after frontend updates.
-4. Optionally use GitHub Actions pipeline for automated deployment.
-5. Validate output endpoints (CloudFront, Lambda URL, WebSocket, table names).
-
----
-
-### 11. Expected Outcomes
+### 8. Expected Outcomes
 
 **Technical Outcomes:**
 
@@ -301,7 +262,7 @@ Typical monthly infrastructure cost (Free Tier / Small Scale): **~$4.32/month**
 ---
 
 
-### 12. Future Improvements
+### 9. Future Improvements
 
 1. Add production-ready SES email workflow for invitations.
 2. Add AWS WAF managed rules for edge protection.
