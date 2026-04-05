@@ -1,77 +1,48 @@
 ---
 title: "Workshop"
-date: 2024-01-01
+date: 2026-03-26
 weight: 4
 chapter: false
 pre: " <b> 4. </b> "
 ---
 
-# Authentication and Access Control using AWS IAM
+# GuardScript — Serverless Script Protection Platform
 
----
+## Deploying GuardScript on AWS
 
-#### Overview
+**GuardScript** is a script distribution platform with loader-based access control, built on a fully serverless AWS architecture. In this workshop, you will deploy the complete platform — from source code to a live, operational system — using AWS SAM and the AWS CLI.
 
-AWS Identity and Access Management (IAM) is a service that enables secure control of access to AWS resources.
+#### What you will deploy
 
-In this workshop, you will implement a complete access control workflow including:
+- **AWS Lambda** (Node.js 20.x) — Modular monolith API backend
+- **Amazon DynamoDB** — 14 tables (PAY_PER_REQUEST) for all platform data
+- **Amazon S3** — Frontend hosting + encrypted script content storage
+- **Amazon CloudFront** — CDN with edge routing and SPA URL rewriting
+- **API Gateway WebSocket** — Real-time event broadcasting to clients
+- **Amazon CloudWatch** — Alarms, operational dashboard, and structured logs
+- **AWS WAF** — Edge request protection (optional)
 
-- Creating IAM users
-- Creating user groups and attaching policies
-- Assigning users to groups (RBAC)
-- Enabling console access
-- Logging in with IAM users
-- Accessing Amazon S3
-- Testing permissions (read vs write)
-- Observing Access Denied errors
+#### Architecture
 
----
+```
+Client (browser / loader)
+  → CloudFront Distribution (SSL termination, cache, SPA rewrite)
+    → Static assets: S3 Bucket (frontend)
+    → /api/*, /files/*: Lambda Function URL (API backend)
+      → DynamoDB (14 tables)
+      → S3 (script content objects)
+  → API Gateway WebSocket API (real-time events)
+  → CloudWatch Logs / Alarms / Dashboard
+```
 
-#### Objectives
-
-This workshop simulates a real-world **authentication and authorization system**:
-
-- **Authentication**: identifies who can access the system (IAM login)
-- **Authorization**: defines what actions they can perform (IAM policies)
-
-You will also implement:
-**Role-Based Access Control (RBAC)**
-
-Where:
-- Users are assigned to Groups
-- Groups are assigned Policies
-- Users inherit permissions from Groups
-
----
-
-#### Hands-on Steps
-
-1. Create IAM Users (dev-1, dev-2)
-2. Create User Group (Developers)
-3. Attach AmazonS3ReadOnlyAccess policy to the group
-4. Add users to the group
-5. Enable console access and log in
-6. Access S3 bucket
-7. Attempt file upload → Access Denied
-8. Verify RBAC behavior
-
----
-
-#### Outcomes
-
-After completing this workshop, you will understand:
-
-- How AWS IAM manages access control
-- How RBAC is implemented in practice
-- The difference between read and write permissions
-- How to troubleshoot Access Denied errors
-
----
+![GuardScript Architecture](/images/2-Proposal/architecture.jpg)
 
 #### Content
 
-1. [Workshop-overview](4.1-Workshop-overview/)
-2. [Authentication-and-RBAC](4.2-Authentication-and-RBAC/)
-3. [Workshop-overview](4.3-Login-and-Permission-Test/)
-4. [Access-Denied-and-RBAC-Validation](4.4-Access-Denied-and-RBAC-Validation/)
----
+1. [Overview](5.1-Workshop-overview/)
+2. [Prerequisites](5.2-Prerequiste/)
+3. [Phase 1: Prepare Lambda Artifacts](5.3-Prepare-Lambda/)
+4. [Phase 2: Deploy AWS Infrastructure](5.4-Deploy-Infrastructure/)
+5. [Phase 3: Deploy Frontend](5.5-Deploy-Frontend/)
+6. [Phase 4: Configure & Validate](5.6-Configure-Validate/)
+7. [Cleanup](5.7-Cleanup/)

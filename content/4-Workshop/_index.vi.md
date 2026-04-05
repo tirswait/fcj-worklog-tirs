@@ -1,37 +1,48 @@
 ---
 title: "Workshop"
-date: 2024-01-01
+date: 2026-03-26
 weight: 4
 chapter: false
 pre: " <b> 4. </b> "
 ---
 
-# Xác thực và phân quyền bằng AWS IAM
+# GuardScript — Nền tảng bảo vệ mã nguồn serverless
 
----
+## Triển khai GuardScript trên AWS
 
-#### Tổng quan
+**GuardScript** là nền tảng phân phối script theo cơ chế loader kiểm soát truy cập, xây dựng trên kiến trúc serverless hoàn toàn trên AWS. Trong workshop này, bạn sẽ triển khai toàn bộ nền tảng — từ source code đến hệ thống hoạt động thực tế — bằng AWS SAM và AWS CLI.
 
-AWS Identity and Access Management (IAM) là dịch vụ giúp kiểm soát truy cập vào tài nguyên AWS một cách an toàn.
+#### Những gì bạn sẽ triển khai
 
-Trong workshop này, bạn sẽ học cách:
-- Tạo IAM user
-- Gán quyền bằng policy
-- Kiểm tra quyền truy cập thông qua IAM dashboard
+- **AWS Lambda** (Node.js 20.x) — API backend theo mô hình modular monolith
+- **Amazon DynamoDB** — 14 bảng (PAY_PER_REQUEST) cho toàn bộ dữ liệu nền tảng
+- **Amazon S3** — Lưu trữ frontend và nội dung script được mã hóa
+- **Amazon CloudFront** — CDN với định tuyến edge và SPA URL rewriting
+- **API Gateway WebSocket** — Phát sự kiện thời gian thực đến client
+- **Amazon CloudWatch** — Alarms, dashboard vận hành và logs cấu trúc
+- **AWS WAF** — Bảo vệ request tại edge (tùy chọn)
 
-Quy trình này mô phỏng một hệ thống:
-- **Xác thực (authentication)**: ai được phép truy cập
-- **Phân quyền (authorization)**: được phép làm gì
+#### Kiến trúc
 
-Ngoài ra, workshop cũng minh họa cơ chế **phân quyền theo vai trò (RBAC)** bằng AWS IAM.
+```
+Client (browser / loader)
+  → CloudFront Distribution (SSL, cache, SPA rewrite)
+    → Static assets: S3 Bucket (frontend)
+    → /api/*, /files/*: Lambda Function URL (API backend)
+      → DynamoDB (14 bảng)
+      → S3 (nội dung script)
+  → API Gateway WebSocket API (sự kiện thời gian thực)
+  → CloudWatch Logs / Alarms / Dashboard
+```
 
----
+![Kiến trúc hệ thống GuardScript](/images/2-Proposal/architecture.jpg)
 
 #### Nội dung
 
-1. [Workshop-overview](4.1-Workshop-overview/)
-2. [Authentication-and-RBAC](4.2-Authentication-and-RBAC/)
-3. [Workshop-overview](4.3-Login-and-Permission-Test/)
-4. [Access-Denied-and-RBAC-Validation](4.4-Access-Denied-and-RBAC-Validation/)
----
-
+1. [Tổng quan](5.1-Workshop-overview/)
+2. [Chuẩn bị](5.2-Prerequiste/)
+3. [Giai đoạn 1: Chuẩn bị Lambda Artifacts](5.3-Prepare-Lambda/)
+4. [Giai đoạn 2: Triển khai hạ tầng AWS](5.4-Deploy-Infrastructure/)
+5. [Giai đoạn 3: Triển khai Frontend](5.5-Deploy-Frontend/)
+6. [Giai đoạn 4: Cấu hình & Kiểm tra](5.6-Configure-Validate/)
+7. [Dọn dẹp tài nguyên](5.7-Cleanup/)

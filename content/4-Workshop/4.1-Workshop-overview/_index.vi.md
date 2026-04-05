@@ -1,89 +1,56 @@
 ---
-title : "Giới thiệu"
-date : 2026-03-30
-weight : 1 
-chapter : false
-pre : " <b> 4.1. </b> "
+title: "Tổng quan"
+date: 2026-03-26
+weight: 1
+chapter: false
+pre: " <b> 4.1. </b> "
 ---
 
-# Tổng quan Workshop
+## Các thành phần hệ thống
 
-Trong workshop này, bạn sẽ làm quen với cách AWS kiểm soát truy cập thông qua dịch vụ **AWS Identity and Access Management (IAM)**. Đây là một thành phần quan trọng giúp đảm bảo hệ thống an toàn và chỉ cho phép người dùng thực hiện những hành động được cấp quyền.
+**GuardScript** là nền tảng phân phối script serverless theo cơ chế loader kiểm soát truy cập. Thay vì chia sẻ source code trực tiếp, nội dung script được phục vụ qua các endpoint có kiểm soát với xác thực chữ ký, bảo vệ replay bằng timestamp/nonce, kiểm tra license, HWID binding và access policy theo workspace.
 
-Thay vì gán quyền trực tiếp cho từng user, workshop sẽ hướng dẫn bạn cách sử dụng **User Group** và **Policy** để quản lý quyền một cách tập trung và hiệu quả hơn.
+Nền tảng gồm năm lớp:
 
----
+- **Client Layer**: Dashboard web (browser) và loader clients (Python, Node.js, Lua). Loader gọi endpoint execute hoặc handshake để lấy nội dung script đã mã hóa.
+- **Edge Layer**: Amazon CloudFront xử lý SSL termination, cache static frontend từ S3, định tuyến `/api/*` và `/files/*` đến Lambda Function URL. CloudFront Function rewrite SPA routes và kiểm tra auth-cookie trước khi phục vụ trang protected.
+- **Compute Layer**: Một Lambda function duy nhất (Node.js 20.x, modular monolith) xử lý toàn bộ API routes — xác thực, quản lý workspace, CRUD project/file, license, access lists, admin console và các loader protocols (v2/v3).
+- **Data Layer**: Amazon DynamoDB lưu toàn bộ dữ liệu có cấu trúc trên 14 bảng PAY_PER_REQUEST. Amazon S3 lưu nội dung script đã mã hóa và static frontend.
+- **Observability Layer**: Amazon CloudWatch cung cấp 3 alarm (Errors, Throttles, p95 Duration), dashboard vận hành và log group có thể cấu hình retention.
 
-## Mục tiêu
+## Sơ đồ kiến trúc
 
-Sau khi hoàn thành workshop, bạn sẽ có thể:
+![Kiến trúc hệ thống GuardScript](/images/2-Proposal/architecture.jpg)
 
-- Tạo và quản lý **IAM User**
-- Tạo **User Group** để gom các user có cùng vai trò
-- Gán quyền thông qua **IAM Policy**
-- Hiểu cách user kế thừa quyền từ group
-- Kiểm tra và xác minh quyền truy cập trên dịch vụ AWS (Amazon S3)
+## Luồng request
 
----
+```
+Client (browser / loader)
+  → CloudFront Distribution
+      → [Static] S3 Frontend Bucket (HTML, CSS, JS)
+      → [/api/*, /files/*] Lambda Function URL
+            → DynamoDB (users, workspaces, projects, files, licenses, ...)
+            → S3 Content Bucket (script objects)
+  → API Gateway WebSocket API
+        → Lambda (→ DynamoDB WebSocket connections table)
+  → CloudWatch Logs / Alarms / Dashboard
+```
 
-## Nội dung chính
+## Tóm tắt Loader Protocol
 
-Trong quá trình thực hành, bạn sẽ thực hiện các bước sau:
+| Protocol | Endpoint | Mã hóa | Ứng dụng |
+|---|---|---|---|
+| v2 | `GET /api/v5/execute` | XOR + HMAC-SHA256 | Loader nhẹ |
+| v3 | `POST /api/v5/handshake` | ECDH X25519 + AES-256-GCM | Loader bảo mật cao |
 
-1. Tạo một IAM User mới
-2. Tạo User Group và gán policy phù hợp
-3. Thêm user vào group
-4. Đăng nhập bằng user vừa tạo
-5. Truy cập dịch vụ Amazon S3
-6. Kiểm tra các hành động:
-   - Hành động được phép (Allow)
-   - Hành động bị từ chối (Deny)
+Cả hai protocol đều yêu cầu `license` key hợp lệ, `HWID`, `timestamp` (trong khoảng ±300s) và `nonce` để chống replay.
 
----
+## Kết quả sau workshop
 
-## Mô hình áp dụng
+Sau khi hoàn thành workshop, bạn sẽ có:
 
-Workshop này mô phỏng một hệ thống phân quyền thực tế dựa trên mô hình:
-
-```text
-User → Group → Policy → Resource
-````
-
-Trong đó:
-
-* **User**: đại diện cho người dùng trong hệ thống
-* **Group**: đại diện cho vai trò (role)
-* **Policy**: định nghĩa quyền truy cập
-* **Resource**: tài nguyên AWS (ví dụ: S3 Bucket)
-
----
-
-## RBAC trong AWS IAM
-
-Workshop áp dụng mô hình **Role-Based Access Control (RBAC)**, trong đó:
-
-* Quyền được gán cho **group (role)**
-* User được thêm vào group
-* User kế thừa quyền từ group
-
-Cách tiếp cận này giúp:
-
-* Quản lý quyền tập trung
-* Dễ mở rộng khi có nhiều user
-* Giảm sai sót khi cấu hình
-* Tuân theo best practice của AWS
-
----
-
-## Kết quả đạt được
-
-Sau khi hoàn thành workshop, bạn sẽ:
-
-* Hiểu cách AWS IAM hoạt động trong thực tế
-* Thiết lập được một hệ thống phân quyền cơ bản
-* Phân biệt rõ giữa **Allow** và **Access Denied**
-* Áp dụng được nguyên tắc **Least Privilege** trong hệ thống
-
----
-
-Workshop này không chỉ giúp bạn nắm lý thuyết mà còn cung cấp trải nghiệm thực tế thông qua việc kiểm tra quyền truy cập trực tiếp trên AWS.
+1. GuardScript backend đầy đủ trên Lambda với 14 bảng DynamoDB.
+2. CloudFront distribution phục vụ frontend từ S3, định tuyến API traffic đến Lambda.
+3. WebSocket endpoint cho sự kiện dashboard thời gian thực.
+4. CloudWatch alarms và dashboard vận hành được cấu hình sẵn.
+5. Tài khoản admin đã khởi tạo và nền tảng sẵn sàng sử dụng.
