@@ -1,9 +1,9 @@
 ---
-title: "Event 3"
+title: "Sự kiện 3"
 date: 2026-04-03
 weight: 3
 chapter: false
-pre: " <b> 4.3. </b> "
+pre: " <b> 3.3. </b> "
 ---
 
 # Event 3:Secure Hybrid Access to S3 using VPC Endpoints
